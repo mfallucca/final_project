@@ -1,7 +1,7 @@
 # Installation
 # After cloning the repo, follow the steps below:
 
-$ cd react-passport-example
+$ cd final_project
 
 $ yarn install
 
