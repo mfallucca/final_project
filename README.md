@@ -1,14 +1,14 @@
 # Installation
 ## After cloning the repo, follow the steps below:
 
-$ cd final_project
+cd final_project
 
-$ yarn install
+yarn install
 
-$ sudo mongod
+sudo mongod
 
-$ yarn run dev
+yarn run dev
 
 ## When editing the files, run the following command for webpack to watch your files and bundle whenever changes are made:
 
-$ yarn run bundle
+yarn run bundle
