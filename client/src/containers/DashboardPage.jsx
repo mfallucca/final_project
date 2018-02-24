@@ -24,6 +24,7 @@ class DashboardPage extends React.Component {
    */
   componentDidMount() {
     const xhr = new XMLHttpRequest();
+    console.log(xhr)
     xhr.open('get', '/api/dashboard');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     // set the authorization HTTP header
@@ -32,7 +33,6 @@ class DashboardPage extends React.Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         this.setState({
-          secretData: xhr.response.message,
           user: xhr.response.user
         });
       }
@@ -46,7 +46,7 @@ class DashboardPage extends React.Component {
   render() {
     return (
       <div>
-        <Dashboard secretData={this.state.secretData} user={this.state.user} />
+        <Dashboard user={this.state.user} />
         <Container>
           <Row>
             <Col size="md-12 sm-12">

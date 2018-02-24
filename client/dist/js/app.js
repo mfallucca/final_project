@@ -15130,8 +15130,7 @@ var _Card = __webpack_require__(63);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Dashboard = function Dashboard(_ref) {
-  var secretData = _ref.secretData,
-      user = _ref.user;
+  var user = _ref.user;
   return _react2.default.createElement(
     _Card.Card,
     { className: 'container' },
@@ -15139,7 +15138,7 @@ var Dashboard = function Dashboard(_ref) {
       title: 'Dashboard',
       subtitle: 'You should get access to this page only after authentication.'
     }),
-    secretData && _react2.default.createElement(
+    _react2.default.createElement(
       _Card.CardText,
       { style: { fontSize: '16px', color: 'green' } },
       'Welcome ',
@@ -15147,16 +15146,9 @@ var Dashboard = function Dashboard(_ref) {
         'strong',
         null,
         user.name
-      ),
-      '!',
-      _react2.default.createElement('br', null),
-      secretData
+      )
     )
   );
-};
-
-Dashboard.propTypes = {
-  secretData: _propTypes2.default.string.isRequired
 };
 
 exports.default = Dashboard;
@@ -15532,6 +15524,7 @@ var DashboardPage = function (_React$Component) {
       var _this2 = this;
 
       var xhr = new XMLHttpRequest();
+      console.log(xhr);
       xhr.open('get', '/api/dashboard');
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       // set the authorization HTTP header
@@ -15540,7 +15533,6 @@ var DashboardPage = function (_React$Component) {
       xhr.addEventListener('load', function () {
         if (xhr.status === 200) {
           _this2.setState({
-            secretData: xhr.response.message,
             user: xhr.response.user
           });
         }
@@ -15558,7 +15550,7 @@ var DashboardPage = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Dashboard2.default, { secretData: this.state.secretData, user: this.state.user }),
+        _react2.default.createElement(_Dashboard2.default, { user: this.state.user }),
         _react2.default.createElement(
           _Grid.Container,
           null,
