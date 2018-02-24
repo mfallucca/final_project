@@ -15489,6 +15489,8 @@ var _Dashboard = __webpack_require__(191);
 
 var _Dashboard2 = _interopRequireDefault(_Dashboard);
 
+var _Grid = __webpack_require__(464);
+
 var _Jumbotron = __webpack_require__(460);
 
 var _Jumbotron2 = _interopRequireDefault(_Jumbotron);
@@ -15558,12 +15560,24 @@ var DashboardPage = function (_React$Component) {
         null,
         _react2.default.createElement(_Dashboard2.default, { secretData: this.state.secretData, user: this.state.user }),
         _react2.default.createElement(
-          _Jumbotron2.default,
+          _Grid.Container,
           null,
           _react2.default.createElement(
-            'p',
+            _Grid.Row,
             null,
-            'test'
+            _react2.default.createElement(
+              _Grid.Col,
+              { size: 'md-12 sm-12' },
+              _react2.default.createElement(
+                _Jumbotron2.default,
+                null,
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'test'
+                )
+              )
+            )
           )
         )
       );
@@ -43010,6 +43024,139 @@ Object.defineProperty(exports, "default", {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 461 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Col = undefined;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Col = exports.Col = function Col(_ref) {
+  var size = _ref.size,
+      children = _ref.children;
+  return _react2.default.createElement(
+    "div",
+    { className: size.split(" ").map(function (size) {
+        return "col-" + size;
+      }).join(" ") },
+    children
+  );
+};
+
+/***/ }),
+/* 462 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Container = undefined;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Container = exports.Container = function Container(_ref) {
+  var fluid = _ref.fluid,
+      children = _ref.children;
+  return _react2.default.createElement(
+    "div",
+    { className: "container" + (fluid ? "-fluid" : "") },
+    children
+  );
+};
+
+/***/ }),
+/* 463 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Row = undefined;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Row = exports.Row = function Row(_ref) {
+  var fluid = _ref.fluid,
+      children = _ref.children;
+  return _react2.default.createElement(
+    "div",
+    { className: "row" + (fluid ? "-fluid" : "") },
+    children
+  );
+};
+
+/***/ }),
+/* 464 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Col = __webpack_require__(461);
+
+Object.keys(_Col).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Col[key];
+    }
+  });
+});
+
+var _Container = __webpack_require__(462);
+
+Object.keys(_Container).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Container[key];
+    }
+  });
+});
+
+var _Row = __webpack_require__(463);
+
+Object.keys(_Row).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Row[key];
+    }
+  });
+});
 
 /***/ })
 /******/ ]);

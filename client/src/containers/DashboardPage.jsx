@@ -1,6 +1,7 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
+import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 
 
@@ -46,9 +47,15 @@ class DashboardPage extends React.Component {
     return (
       <div>
         <Dashboard secretData={this.state.secretData} user={this.state.user} />
-        <Jumbotron>
-          <p>test</p>  
-        </Jumbotron>
+        <Container>
+          <Row>
+            <Col size="md-12 sm-12">
+              <Jumbotron>
+                <p>test</p>  
+              </Jumbotron>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
