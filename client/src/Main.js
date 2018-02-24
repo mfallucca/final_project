@@ -80,11 +80,11 @@ class Main extends Component {
           <div>
             <div className="top-bar">
               <div className="top-bar-left">
-                <Link to="/">React App</Link>
+                <Link to="/">Test</Link>
               </div>
               {this.state.authenticated ? (
                 <div className="top-bar-right">
-                  <Link to="/dashboard">Dashboard</Link>
+                  <Link to="/dashboard">Home</Link>
                   <Link to="/logout">Log out</Link>
                 </div>
               ) : (

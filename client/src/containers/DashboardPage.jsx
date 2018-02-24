@@ -1,6 +1,7 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
+import Jumbotron from "../components/Jumbotron";
 
 
 class DashboardPage extends React.Component {
@@ -42,9 +43,15 @@ class DashboardPage extends React.Component {
    * Render the component.
    */
   render() {
-    return (<Dashboard secretData={this.state.secretData} user={this.state.user} />);
+    return (
+      <div>
+        <Dashboard secretData={this.state.secretData} user={this.state.user} />
+        <Jumbotron>
+          <p>test</p>  
+        </Jumbotron>
+      </div>
+    );
   }
-
 }
 
 export default DashboardPage;
