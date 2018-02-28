@@ -33,3 +33,14 @@ router.get('/amazon/:upc', (req, res) => {
   });
 })
 module.exports = router;
+
+
+
+// const walmartKey = "ykcpq79ch9tq6pews4mtxx9u"
+// const walmart = require('walmart')(walmartKey);
+// let searchItem = 'external hard drive'
+// const resultsArray = []
+// walmart.search(searchItem).then(function(items) {
+//     resultsArray.push(items);
+//     console.log(JSON.stringify(resultsArray, null, 2));
+// });
