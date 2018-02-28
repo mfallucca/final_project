@@ -1,5 +1,7 @@
 const express = require('express');
 const amazon = require('amazon-product-api');
+const walmartKey = "ykcpq79ch9tq6pews4mtxx9u"
+const walmart = require('walmart')(walmartKey);
 const client = amazon.createClient({
   awsId: "AKIAI2DDSRFYAR4GCWRQ",
   awsSecret: "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",
@@ -32,12 +34,25 @@ router.get('/amazon/:upc', (req, res) => {
     console.log(err);
   });
 })
+
+router.get('/walmart/:search', (req, res) => {
+  var search = req.params.search;
+  const resultsArray = []
+  walmart.search(search).then(function(results) {
+    resultsArray.push(results);
+    res.status(200).json({
+      queryResults: resultsArray
+    });
+    console.log(results)
+  })
+
+})
+
 module.exports = router;
 
 
 
-// const walmartKey = "ykcpq79ch9tq6pews4mtxx9u"
-// const walmart = require('walmart')(walmartKey);
+
 // let searchItem = 'external hard drive'
 // const resultsArray = []
 // walmart.search(searchItem).then(function(items) {
