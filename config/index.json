@@ -1,4 +1,4 @@
 {
-  "dbUri": "mongodb://localhost/react_passport",
+  "dbUri": "mongodb://admin:password@ds161493.mlab.com:61493/heroku_vxkht8lt",
   "jwtSecret": "bubb rubb"
 }
