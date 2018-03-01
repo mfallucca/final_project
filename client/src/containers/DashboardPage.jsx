@@ -14,7 +14,7 @@ class DashboardPage extends React.Component {
     this.state = {
       secretData: '',
       user: {},
-      upc: '040000395058',
+      upc: '190198667250',
       url: '',
       medimage: '',
       resultTitle: '',
@@ -101,7 +101,7 @@ class DashboardPage extends React.Component {
             handleFormSubmit={this.handleFormSubmit}
             handleInputChangeQuery={this.handleInputChangeQuery}
           />
-        </Container>
+        </Container><br />
         <Container fluid>
         <Row>
           <Col size="col-sm-6 col-md-6 col-md-offset-3">
@@ -125,8 +125,8 @@ class DashboardPage extends React.Component {
             )}
           </Col>
         </Row>
-      </Container>
-        {/* <Container>
+      </Container><br />
+        <Container>
           <Row>
             <Col size="md-12 sm-12">
               <Jumbotron>
@@ -135,7 +135,7 @@ class DashboardPage extends React.Component {
               </Jumbotron>
             </Col>
           </Row>
-        </Container> */}
+        </Container>
       </div>
     );
   }

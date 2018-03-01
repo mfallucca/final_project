@@ -15870,7 +15870,7 @@ var DashboardPage = function (_React$Component) {
     _this.state = {
       secretData: '',
       user: {},
-      upc: '040000395058',
+      upc: '190198667250',
       url: '',
       medimage: '',
       resultTitle: '',
@@ -15974,6 +15974,7 @@ var DashboardPage = function (_React$Component) {
             handleInputChangeQuery: this.handleInputChangeQuery
           })
         ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
           _Grid.Container,
           { fluid: true },
@@ -16011,6 +16012,33 @@ var DashboardPage = function (_React$Component) {
                 'h3',
                 null,
                 'No Results to Display'
+              )
+            )
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          _Grid.Container,
+          null,
+          _react2.default.createElement(
+            _Grid.Row,
+            null,
+            _react2.default.createElement(
+              _Grid.Col,
+              { size: 'md-12 sm-12' },
+              _react2.default.createElement(
+                _Jumbotron2.default,
+                null,
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: this.state.url },
+                    this.state.resultTitle
+                  )
+                ),
+                _react2.default.createElement('img', { src: this.state.medimage })
               )
             )
           )
