@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import SearchForm from "../components/Form";
 import { SearchList, SearchListItem  } from "../components/Search";
+import CompareBtn from "../components/CompareBtn";
 class DashboardPage extends React.Component {
   /**
    * Class constructor.
@@ -14,20 +15,29 @@ class DashboardPage extends React.Component {
     this.state = {
       secretData: '',
       user: {},
-      upc: '190198667250',
+      upc: '',
       url: '',
       medimage: '',
       resultTitle: '',
       walmartResults: [],
-      search: ''
+      search: '',
+      amazonPrice: ''
     };
     this.handleInputChangeQuery = this.handleInputChangeQuery.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleCompareClick = this.handleCompareClick.bind(this);
+    this.loadAmazon = this.loadAmazon.bind(this);
   }
 
   handleInputChangeQuery(event) {
     this.setState({ search: event.target.value });
   };
+
+  handleCompareClick(event) {
+    this.setState({ upc: event.target.value }, this.loadAmazon)
+    console.log(this.state.upc)
+  }
+
 
   handleFormSubmit(event) {
     event.preventDefault();
@@ -69,9 +79,11 @@ class DashboardPage extends React.Component {
       }
     });
     xhr.send();
-
+  }
+  loadAmazon() {
     const amazonxhr = new XMLHttpRequest();
     let upc = this.state.upc
+    console.log(amazonxhr);
     amazonxhr.open('get', '/api/amazon/' + upc);
     amazonxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     // set the authorization HTTP header
@@ -83,12 +95,14 @@ class DashboardPage extends React.Component {
     this.setState({
       url: amazonxhr.response.url,
       medimage: amazonxhr.response.medimage,
-      resultTitle: amazonxhr.response.title
+      resultTitle: amazonxhr.response.title,
+      amazonPrice: amazonxhr.response.newprice
     });
   }
   });
   amazonxhr.send();
 }
+
   /**
    * Render the component.
    */
@@ -104,7 +118,7 @@ class DashboardPage extends React.Component {
         </Container><br />
         <Container fluid>
         <Row>
-          <Col size="col-sm-6 col-md-6 col-md-offset-3">
+          <Col size="sm-6 md-6">
               {this.state.walmartResults.length ? (
                 <SearchList>
                   {this.state.walmartResults.map(walmartContainer => (
@@ -117,6 +131,10 @@ class DashboardPage extends React.Component {
                       <p>
                           ${walmartContainer.salePrice}
                       </p>
+                      <CompareBtn
+                        upc={walmartContainer.upc}
+                        handleCompareClick={this.handleCompareClick}
+                      />
                     </SearchListItem>
                   ))}
                 </SearchList>
@@ -124,18 +142,21 @@ class DashboardPage extends React.Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
-        </Row>
-      </Container><br />
-        <Container>
-          <Row>
-            <Col size="md-12 sm-12">
+          <Col size="md-6 sm-6">
+          {this.state.upc ? (
               <Jumbotron>
-                <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>  
+                <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
+                <p>{this.state.amazonPrice}</p>
                 <img src= {this.state.medimage}></img>
               </Jumbotron>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
             </Col>
-          </Row>
-        </Container>
+        </Row>
+      </Container><br />
+
+
       </div>
     );
   }

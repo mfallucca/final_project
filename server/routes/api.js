@@ -24,11 +24,12 @@ router.get('/amazon/:upc', (req, res) => {
     itemId: upc,
     responseGroup: 'ItemAttributes,Offers,Images'
   }).then(function(results) {
-    console.log(results[0].MediumImage[0].URL[0])
+    console.log(results[0])
     res.status(200).json({
       url: results[0].DetailPageURL[0],
       medimage: results[0].MediumImage[0].URL[0],
-      title: results[0].ItemAttributes[0].Title[0]
+      title: results[0].ItemAttributes[0].Title[0],
+      newprice: results[0].OfferSummary[0].LowestNewPrice[0].FormattedPrice[0]
     });
   }).catch(function(err) {
     console.log(err);
@@ -43,7 +44,6 @@ router.get('/walmart/:search', (req, res) => {
     res.status(200).json({
       queryResults: resultsArray
     });
-    console.log(results)
   })
 
 })
