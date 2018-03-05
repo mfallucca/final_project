@@ -21,7 +21,8 @@ class DashboardPage extends React.Component {
       resultTitle: '',
       walmartResults: [],
       search: '',
-      amazonPrice: ''
+      amazonPrice: '',
+      ebayObject: {},
     };
     this.handleInputChangeQuery = this.handleInputChangeQuery.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -96,7 +97,12 @@ class DashboardPage extends React.Component {
       url: amazonxhr.response.url,
       medimage: amazonxhr.response.medimage,
       resultTitle: amazonxhr.response.title,
-      amazonPrice: amazonxhr.response.newprice
+      amazonPrice: amazonxhr.response.newprice,
+      ebayTitle: amazonxhr.response.ebayTitle,
+      ebayImage: amazonxhr.response.ebayImage,
+      ebayPrice: amazonxhr.response.ebayPrice,
+      ebayShipping: amazonxhr.response.ebayShipping,
+      ebayURL: amazonxhr.response.ebayURL
     });
   }
   });
@@ -152,7 +158,21 @@ class DashboardPage extends React.Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
-            </Col>
+          </Col>
+        </Row>
+        <Row>
+          {/* EBAY RETURNED INFO */}
+        <Col size="md-6 sm-6">
+          {this.state.upc ? (
+              <Jumbotron>
+                <p><a href = {this.state.ebayURL}>{this.state.ebayTitle}</a></p>
+                <p> Price: {this.state.ebayPrice}</p><p> Shipping: {this.state.ebayShipping}</p>
+                <img src= {this.state.ebayImage}></img>
+              </Jumbotron>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
+          </Col>
         </Row>
       </Container><br />
 

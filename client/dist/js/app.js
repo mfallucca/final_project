@@ -16397,7 +16397,8 @@ var DashboardPage = function (_React$Component) {
       resultTitle: '',
       walmartResults: [],
       search: '',
-      amazonPrice: ''
+      amazonPrice: '',
+      ebayObject: {}
     };
     _this.handleInputChangeQuery = _this.handleInputChangeQuery.bind(_this);
     _this.handleFormSubmit = _this.handleFormSubmit.bind(_this);
@@ -16486,7 +16487,12 @@ var DashboardPage = function (_React$Component) {
             url: amazonxhr.response.url,
             medimage: amazonxhr.response.medimage,
             resultTitle: amazonxhr.response.title,
-            amazonPrice: amazonxhr.response.newprice
+            amazonPrice: amazonxhr.response.newprice,
+            ebayTitle: amazonxhr.response.ebayTitle,
+            ebayImage: amazonxhr.response.ebayImage,
+            ebayPrice: amazonxhr.response.ebayPrice,
+            ebayShipping: amazonxhr.response.ebayShipping,
+            ebayURL: amazonxhr.response.ebayURL
           });
         }
       });
@@ -16579,6 +16585,44 @@ var DashboardPage = function (_React$Component) {
                   this.state.amazonPrice
                 ),
                 _react2.default.createElement('img', { src: this.state.medimage })
+              ) : _react2.default.createElement(
+                'h3',
+                null,
+                'No Results to Display'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _Grid.Row,
+            null,
+            _react2.default.createElement(
+              _Grid.Col,
+              { size: 'md-6 sm-6' },
+              this.state.upc ? _react2.default.createElement(
+                _Jumbotron2.default,
+                null,
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: this.state.ebayURL },
+                    this.state.ebayTitle
+                  )
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  ' Price: ',
+                  this.state.ebayPrice
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  ' Shipping: ',
+                  this.state.ebayShipping
+                ),
+                _react2.default.createElement('img', { src: this.state.ebayImage })
               ) : _react2.default.createElement(
                 'h3',
                 null,

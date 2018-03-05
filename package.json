@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "css-loader": "^0.28.10",
+    "ebay": "0.0.1",
     "express": "^4.15.3",
     "jsonwebtoken": "^7.4.1",
     "material-ui": "^0.18.1",
