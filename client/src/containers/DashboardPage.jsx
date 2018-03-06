@@ -134,14 +134,23 @@ class DashboardPage extends React.Component {
     ebayxhr.responseType = 'json';
     ebayxhr.addEventListener('load', () => {
     // console.log(ebayxhr)
-    if (ebayxhr.status === 200) {
+    if (ebayxhr.status === 200 && ebayxhr.response.ebayURL) {
     this.setState({
       ebayTitle: ebayxhr.response.ebayTitle,
       ebayImage: ebayxhr.response.ebayImage,
       ebayPrice: ebayxhr.response.ebayPrice,
       ebayShipping: ebayxhr.response.ebayShipping,
       ebayURL: ebayxhr.response.ebayURL
-    });
+    })
+  }
+  else {
+    this.setState({
+      ebayTitle: '',
+      ebayImage: '',
+      ebayPrice: '',
+      ebayShipping: '',
+      ebayURL: ''
+    })
   }
   });
   ebayxhr.send();

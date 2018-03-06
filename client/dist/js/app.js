@@ -16527,13 +16527,21 @@ var DashboardPage = function (_React$Component) {
       ebayxhr.responseType = 'json';
       ebayxhr.addEventListener('load', function () {
         // console.log(ebayxhr)
-        if (ebayxhr.status === 200) {
+        if (ebayxhr.status === 200 && ebayxhr.response.ebayURL) {
           _this5.setState({
             ebayTitle: ebayxhr.response.ebayTitle,
             ebayImage: ebayxhr.response.ebayImage,
             ebayPrice: ebayxhr.response.ebayPrice,
             ebayShipping: ebayxhr.response.ebayShipping,
             ebayURL: ebayxhr.response.ebayURL
+          });
+        } else {
+          _this5.setState({
+            ebayTitle: '',
+            ebayImage: '',
+            ebayPrice: '',
+            ebayShipping: '',
+            ebayURL: ''
           });
         }
       });
