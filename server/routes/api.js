@@ -23,6 +23,9 @@ router.get('/dashboard', (req, res) => {
   });
   // console.log(req.user)
 });
+
+// Amazon API route, takes UPC as a parameter
+
 router.get('/amazon/:upc', (req, res) => {
   // console.log(res)
   let upc = req.params.upc;
@@ -44,6 +47,8 @@ router.get('/amazon/:upc', (req, res) => {
   });
 })
 
+// Walmart API route, takes search term as a parameter
+
 router.get('/walmart/:search', (req, res) => {
   var search = req.params.search;
   const resultsArray = []
@@ -56,6 +61,9 @@ router.get('/walmart/:search', (req, res) => {
 
 })
 
+// Ebay API route, takes UPC as a parameter
+// I removed the ebayobject, though we may need to add it for error handling
+
 router.get('/ebay/:upc', (req, res) => {
 let upc = req.params.upc;
 let params = {
@@ -66,7 +74,6 @@ let params = {
 
 ebay.get('finding', params, function (err, data) {
   if(err) throw err;
-  if (data && data.findItemsAdvancedResponse[0] && data.findItemsAdvancedResponse[0].searchResult[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].galleryURL[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].sellingStatus[0].convertedCurrentPrice[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].shippingInfo[0].shippingServiceCost[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].viewItemURL[0]) {
     res.status(200).json({
       ebayTitle: data.findItemsAdvancedResponse[0].searchResult[0].item[0].title[0],
       ebayImage: data.findItemsAdvancedResponse[0].searchResult[0].item[0].galleryURL[0],
@@ -74,7 +81,6 @@ ebay.get('finding', params, function (err, data) {
       ebayShipping: data.findItemsAdvancedResponse[0].searchResult[0].item[0].shippingInfo[0].shippingServiceCost[0].__value__,
       ebayURL: data.findItemsAdvancedResponse[0].searchResult[0].item[0].viewItemURL[0]
     });
-  }
 });
 });
 // router.get('/ebay/:upc', (req, res) => {

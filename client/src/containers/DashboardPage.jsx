@@ -27,6 +27,7 @@ class DashboardPage extends React.Component {
       ebayPrice: '',
       ebayShipping: '',
       ebayURL: '',
+      show: false
     };
     this.handleInputChangeQuery = this.handleInputChangeQuery.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -41,7 +42,7 @@ class DashboardPage extends React.Component {
   };
 
   handleCompareClick(event) {
-    this.setState({ upc: event.target.value }, this.loadBoth)
+    this.setState({ upc: event.target.value, show: true }, this.loadBoth)
     console.log(this.state.upc)
   }
 
@@ -87,6 +88,9 @@ class DashboardPage extends React.Component {
     });
     xhr.send();
   }
+
+  // method to call the Amazon API
+
   loadAmazon() {
     const amazonxhr = new XMLHttpRequest();
     let upc = this.state.upc
@@ -98,17 +102,27 @@ class DashboardPage extends React.Component {
     amazonxhr.responseType = 'json';
     amazonxhr.addEventListener('load', () => {
     // console.log(amazonxhr)
-    if (amazonxhr.status === 200) {
-    this.setState({
-      url: amazonxhr.response.url,
-      medimage: amazonxhr.response.medimage,
-      resultTitle: amazonxhr.response.title,
-      amazonPrice: amazonxhr.response.newprice
-    });
+    if (amazonxhr.status === 200 && amazonxhr.response.url) {
+      this.setState({
+        url: amazonxhr.response.url,
+        medimage: amazonxhr.response.medimage,
+        resultTitle: amazonxhr.response.title,
+        amazonPrice: amazonxhr.response.newprice
+      })
+    }
+    else {
+      this.setState({
+        url: '',
+        medimage: '',
+        resultTitle: '',
+        amazonPrice: ''
+    })
   }
   });
   amazonxhr.send();
 }
+
+// method to call the Ebay API
 
   loadEbay() {
     const ebayxhr = new XMLHttpRequest();
@@ -133,6 +147,7 @@ class DashboardPage extends React.Component {
   ebayxhr.send();
   }
 
+// Method to call both the amazon and ebay APIs simultaneously
 
   loadBoth() {
     this.loadAmazon();
@@ -174,9 +189,10 @@ class DashboardPage extends React.Component {
                   ))}
                 </SearchList>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3>Please Search Using the Box Above!</h3>
             )}
           </Col>
+          {this.state.show ? (
           <Col size="md-6 sm-6">
           {this.state.url ? (
               <Jumbotron>
@@ -185,10 +201,17 @@ class DashboardPage extends React.Component {
                 <img src= {this.state.medimage}></img>
               </Jumbotron>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3>No Amazon Results to Display</h3>
             )}
           </Col>
+                ) : (
+                  console.log("hiding")
+                )}
         </Row>
+
+        {this.state.show ? (
+
+
         <Row>
           {/* EBAY RETURNED INFO */}
         <Col size="md-6 sm-6">
@@ -199,10 +222,13 @@ class DashboardPage extends React.Component {
                 <img src={this.state.ebayImage}></img>
               </Jumbotron>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3>No Ebay Results to Display</h3>
             )}
           </Col>
         </Row>
+        ) : (
+          console.log("hiding")
+        )}
       </Container><br />
 
 

@@ -16402,7 +16402,8 @@ var DashboardPage = function (_React$Component) {
       ebayImage: '',
       ebayPrice: '',
       ebayShipping: '',
-      ebayURL: ''
+      ebayURL: '',
+      show: false
     };
     _this.handleInputChangeQuery = _this.handleInputChangeQuery.bind(_this);
     _this.handleFormSubmit = _this.handleFormSubmit.bind(_this);
@@ -16421,7 +16422,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'handleCompareClick',
     value: function handleCompareClick(event) {
-      this.setState({ upc: event.target.value }, this.loadBoth);
+      this.setState({ upc: event.target.value, show: true }, this.loadBoth);
       console.log(this.state.upc);
     }
   }, {
@@ -16473,6 +16474,9 @@ var DashboardPage = function (_React$Component) {
       });
       xhr.send();
     }
+
+    // method to call the Amazon API
+
   }, {
     key: 'loadAmazon',
     value: function loadAmazon() {
@@ -16488,17 +16492,27 @@ var DashboardPage = function (_React$Component) {
       amazonxhr.responseType = 'json';
       amazonxhr.addEventListener('load', function () {
         // console.log(amazonxhr)
-        if (amazonxhr.status === 200) {
+        if (amazonxhr.status === 200 && amazonxhr.response.url) {
           _this4.setState({
             url: amazonxhr.response.url,
             medimage: amazonxhr.response.medimage,
             resultTitle: amazonxhr.response.title,
             amazonPrice: amazonxhr.response.newprice
           });
+        } else {
+          _this4.setState({
+            url: '',
+            medimage: '',
+            resultTitle: '',
+            amazonPrice: ''
+          });
         }
       });
       amazonxhr.send();
     }
+
+    // method to call the Ebay API
+
   }, {
     key: 'loadEbay',
     value: function loadEbay() {
@@ -16525,6 +16539,9 @@ var DashboardPage = function (_React$Component) {
       });
       ebayxhr.send();
     }
+
+    // Method to call both the amazon and ebay APIs simultaneously
+
   }, {
     key: 'loadBoth',
     value: function loadBoth() {
@@ -16593,10 +16610,10 @@ var DashboardPage = function (_React$Component) {
               ) : _react2.default.createElement(
                 'h3',
                 null,
-                'No Results to Display'
+                'Please Search Using the Box Above!'
               )
             ),
-            _react2.default.createElement(
+            this.state.show ? _react2.default.createElement(
               _Grid.Col,
               { size: 'md-6 sm-6' },
               this.state.url ? _react2.default.createElement(
@@ -16620,11 +16637,11 @@ var DashboardPage = function (_React$Component) {
               ) : _react2.default.createElement(
                 'h3',
                 null,
-                'No Results to Display'
+                'No Amazon Results to Display'
               )
-            )
+            ) : console.log("hiding")
           ),
-          _react2.default.createElement(
+          this.state.show ? _react2.default.createElement(
             _Grid.Row,
             null,
             _react2.default.createElement(
@@ -16658,10 +16675,10 @@ var DashboardPage = function (_React$Component) {
               ) : _react2.default.createElement(
                 'h3',
                 null,
-                'No Results to Display'
+                'No Ebay Results to Display'
               )
             )
-          )
+          ) : console.log("hiding")
         ),
         _react2.default.createElement('br', null)
       );
