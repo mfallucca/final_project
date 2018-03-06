@@ -236,7 +236,7 @@ class DashboardPage extends React.Component {
               <Container>
                 <h2>eBay.com's Best Match:</h2>
                 <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
-                <p> Price: {this.state.ebayPrice}</p><p> Shipping: {this.state.ebayShipping}</p>
+                <p> Price: ${this.state.ebayPrice}</p><p> Shipping: ${this.state.ebayShipping}</p>
                 <img src={this.state.ebayImage}></img>
               </Container>
             ) : (

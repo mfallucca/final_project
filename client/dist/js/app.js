@@ -16701,13 +16701,13 @@ var DashboardPage = function (_React$Component) {
                 _react2.default.createElement(
                   'p',
                   null,
-                  ' Price: ',
+                  ' Price: $',
                   this.state.ebayPrice
                 ),
                 _react2.default.createElement(
                   'p',
                   null,
-                  ' Shipping: ',
+                  ' Shipping: $',
                   this.state.ebayShipping
                 ),
                 _react2.default.createElement('img', { src: this.state.ebayImage })
