@@ -16680,7 +16680,7 @@ var DashboardPage = function (_React$Component) {
                 { className: 'text-center' },
                 'No Amazon Results to Display'
               ),
-              _react2.default.createElement('br', null),
+              _react2.default.createElement('hr', null),
               this.state.ebayTitle ? _react2.default.createElement(
                 _Grid.Container,
                 null,

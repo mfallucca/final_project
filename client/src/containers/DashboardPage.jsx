@@ -231,7 +231,7 @@ class DashboardPage extends React.Component {
           ) : (
             <h3 className = "text-center">No Amazon Results to Display</h3>
           )}
-          <br />
+          <hr />
             {this.state.ebayTitle ? (
               <Container>
                 <h2>eBay.com's Best Match:</h2>
