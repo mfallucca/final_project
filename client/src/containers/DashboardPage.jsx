@@ -32,6 +32,8 @@ class DashboardPage extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleCompareClick = this.handleCompareClick.bind(this);
     this.loadAmazon = this.loadAmazon.bind(this);
+    this.loadEbay = this.loadEbay.bind(this);
+    this.loadBoth = this.loadBoth.bind(this);
   }
 
   handleInputChangeQuery(event) {
@@ -39,7 +41,7 @@ class DashboardPage extends React.Component {
   };
 
   handleCompareClick(event) {
-    this.setState({ upc: event.target.value }, this.loadAmazon)
+    this.setState({ upc: event.target.value }, this.loadBoth)
     console.log(this.state.upc)
   }
 
@@ -101,18 +103,41 @@ class DashboardPage extends React.Component {
       url: amazonxhr.response.url,
       medimage: amazonxhr.response.medimage,
       resultTitle: amazonxhr.response.title,
-      amazonPrice: amazonxhr.response.newprice,
-      ebayTitle: amazonxhr.response.ebayTitle,
-      ebayImage: amazonxhr.response.ebayImage,
-      ebayPrice: amazonxhr.response.ebayPrice,
-      ebayShipping: amazonxhr.response.ebayShipping,
-      ebayURL: amazonxhr.response.ebayURL
+      amazonPrice: amazonxhr.response.newprice
     });
   }
   });
   amazonxhr.send();
 }
 
+  loadEbay() {
+    const ebayxhr = new XMLHttpRequest();
+    let upc = this.state.upc
+    ebayxhr.open('get', '/api/ebay/' + upc);
+    ebayxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // set the authorization HTTP header
+    ebayxhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    ebayxhr.responseType = 'json';
+    ebayxhr.addEventListener('load', () => {
+    // console.log(ebayxhr)
+    if (ebayxhr.status === 200) {
+    this.setState({
+      ebayTitle: ebayxhr.response.ebayTitle,
+      ebayImage: ebayxhr.response.ebayImage,
+      ebayPrice: ebayxhr.response.ebayPrice,
+      ebayShipping: ebayxhr.response.ebayShipping,
+      ebayURL: ebayxhr.response.ebayURL
+    });
+  }
+  });
+  ebayxhr.send();
+  }
+
+
+  loadBoth() {
+    this.loadAmazon();
+    this.loadEbay();
+  }
   /**
    * Render the component.
    */
@@ -153,7 +178,7 @@ class DashboardPage extends React.Component {
             )}
           </Col>
           <Col size="md-6 sm-6">
-          {this.state.upc ? (
+          {this.state.url ? (
               <Jumbotron>
                 <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
                 <p>{this.state.amazonPrice}</p>
@@ -167,7 +192,7 @@ class DashboardPage extends React.Component {
         <Row>
           {/* EBAY RETURNED INFO */}
         <Col size="md-6 sm-6">
-          {this.state.upc ? (
+          {this.state.ebayTitle ? (
               <Jumbotron>
                 <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
                 <p> Price: {this.state.ebayPrice}</p><p> Shipping: {this.state.ebayShipping}</p>

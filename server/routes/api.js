@@ -25,24 +25,7 @@ router.get('/dashboard', (req, res) => {
 });
 router.get('/amazon/:upc', (req, res) => {
   // console.log(res)
-  var upc = req.params.upc;
-  let params = {
-    'OPERATION-NAME': 'findItemsAdvanced', 
-    'keywords': upc,
-    'sortOrder': 'PricePlusShippingLowest'
-  };
-  let ebayObject;
-  ebay.get('finding', params, function (err, data) {
-    if(err) throw err;
-    let ebayData = data.findItemsAdvancedResponse[0].searchResult[0].item[0];
-    ebayObject = {
-      title: ebayData.title[0],
-      image: ebayData.galleryURL[0],
-      price: ebayData.sellingStatus[0].convertedCurrentPrice[0].__value__,
-      shipping: ebayData.shippingInfo[0].shippingServiceCost[0].__value__,
-      url: ebayData.viewItemURL[0]
-    }
-  });
+  let upc = req.params.upc;
 
   client.itemLookup({
     idType: 'UPC',
@@ -54,12 +37,7 @@ router.get('/amazon/:upc', (req, res) => {
       url: results[0].DetailPageURL[0],
       medimage: results[0].MediumImage[0].URL[0],
       title: results[0].ItemAttributes[0].Title[0],
-      newprice: results[0].OfferSummary[0].LowestNewPrice[0].FormattedPrice[0],
-      ebayTitle: ebayObject.title,
-      ebayImage: ebayObject.image,
-      ebayPrice: ebayObject.price,
-      ebayShipping: ebayObject.shipping,
-      ebayURL: ebayObject.url
+      newprice: results[0].OfferSummary[0].LowestNewPrice[0].FormattedPrice[0]
     });
   }).catch(function(err) {
     console.log(err);
@@ -78,6 +56,27 @@ router.get('/walmart/:search', (req, res) => {
 
 })
 
+router.get('/ebay/:upc', (req, res) => {
+let upc = req.params.upc;
+let params = {
+  'OPERATION-NAME': 'findItemsAdvanced', 
+  'keywords': upc,
+  'sortOrder': 'PricePlusShippingLowest'
+};
+
+ebay.get('finding', params, function (err, data) {
+  if(err) throw err;
+  if (data && data.findItemsAdvancedResponse[0] && data.findItemsAdvancedResponse[0].searchResult[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].galleryURL[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].sellingStatus[0].convertedCurrentPrice[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].shippingInfo[0].shippingServiceCost[0] && data.findItemsAdvancedResponse[0].searchResult[0].item[0].viewItemURL[0]) {
+    res.status(200).json({
+      ebayTitle: data.findItemsAdvancedResponse[0].searchResult[0].item[0].title[0],
+      ebayImage: data.findItemsAdvancedResponse[0].searchResult[0].item[0].galleryURL[0],
+      ebayPrice: data.findItemsAdvancedResponse[0].searchResult[0].item[0].sellingStatus[0].convertedCurrentPrice[0].__value__,
+      ebayShipping: data.findItemsAdvancedResponse[0].searchResult[0].item[0].shippingInfo[0].shippingServiceCost[0].__value__,
+      ebayURL: data.findItemsAdvancedResponse[0].searchResult[0].item[0].viewItemURL[0]
+    });
+  }
+});
+});
 // router.get('/ebay/:upc', (req, res) => {
 //   var search = 
 // })

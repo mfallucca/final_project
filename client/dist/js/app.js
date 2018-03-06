@@ -16398,12 +16398,18 @@ var DashboardPage = function (_React$Component) {
       walmartResults: [],
       search: '',
       amazonPrice: '',
-      ebayObject: {}
+      ebayTitle: '',
+      ebayImage: '',
+      ebayPrice: '',
+      ebayShipping: '',
+      ebayURL: ''
     };
     _this.handleInputChangeQuery = _this.handleInputChangeQuery.bind(_this);
     _this.handleFormSubmit = _this.handleFormSubmit.bind(_this);
     _this.handleCompareClick = _this.handleCompareClick.bind(_this);
     _this.loadAmazon = _this.loadAmazon.bind(_this);
+    _this.loadEbay = _this.loadEbay.bind(_this);
+    _this.loadBoth = _this.loadBoth.bind(_this);
     return _this;
   }
 
@@ -16415,7 +16421,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'handleCompareClick',
     value: function handleCompareClick(event) {
-      this.setState({ upc: event.target.value }, this.loadAmazon);
+      this.setState({ upc: event.target.value }, this.loadBoth);
       console.log(this.state.upc);
     }
   }, {
@@ -16487,18 +16493,44 @@ var DashboardPage = function (_React$Component) {
             url: amazonxhr.response.url,
             medimage: amazonxhr.response.medimage,
             resultTitle: amazonxhr.response.title,
-            amazonPrice: amazonxhr.response.newprice,
-            ebayTitle: amazonxhr.response.ebayTitle,
-            ebayImage: amazonxhr.response.ebayImage,
-            ebayPrice: amazonxhr.response.ebayPrice,
-            ebayShipping: amazonxhr.response.ebayShipping,
-            ebayURL: amazonxhr.response.ebayURL
+            amazonPrice: amazonxhr.response.newprice
           });
         }
       });
       amazonxhr.send();
     }
+  }, {
+    key: 'loadEbay',
+    value: function loadEbay() {
+      var _this5 = this;
 
+      var ebayxhr = new XMLHttpRequest();
+      var upc = this.state.upc;
+      ebayxhr.open('get', '/api/ebay/' + upc);
+      ebayxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      // set the authorization HTTP header
+      ebayxhr.setRequestHeader('Authorization', 'bearer ' + _Auth2.default.getToken());
+      ebayxhr.responseType = 'json';
+      ebayxhr.addEventListener('load', function () {
+        // console.log(ebayxhr)
+        if (ebayxhr.status === 200) {
+          _this5.setState({
+            ebayTitle: ebayxhr.response.ebayTitle,
+            ebayImage: ebayxhr.response.ebayImage,
+            ebayPrice: ebayxhr.response.ebayPrice,
+            ebayShipping: ebayxhr.response.ebayShipping,
+            ebayURL: ebayxhr.response.ebayURL
+          });
+        }
+      });
+      ebayxhr.send();
+    }
+  }, {
+    key: 'loadBoth',
+    value: function loadBoth() {
+      this.loadAmazon();
+      this.loadEbay();
+    }
     /**
      * Render the component.
      */
@@ -16506,7 +16538,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       return _react2.default.createElement(
         'div',
@@ -16554,7 +16586,7 @@ var DashboardPage = function (_React$Component) {
                     ),
                     _react2.default.createElement(_CompareBtn2.default, {
                       upc: walmartContainer.upc,
-                      handleCompareClick: _this5.handleCompareClick
+                      handleCompareClick: _this6.handleCompareClick
                     })
                   );
                 })
@@ -16567,7 +16599,7 @@ var DashboardPage = function (_React$Component) {
             _react2.default.createElement(
               _Grid.Col,
               { size: 'md-6 sm-6' },
-              this.state.upc ? _react2.default.createElement(
+              this.state.url ? _react2.default.createElement(
                 _Jumbotron2.default,
                 null,
                 _react2.default.createElement(
@@ -16598,7 +16630,7 @@ var DashboardPage = function (_React$Component) {
             _react2.default.createElement(
               _Grid.Col,
               { size: 'md-6 sm-6' },
-              this.state.upc ? _react2.default.createElement(
+              this.state.ebayTitle ? _react2.default.createElement(
                 _Jumbotron2.default,
                 null,
                 _react2.default.createElement(
