@@ -22,7 +22,11 @@ class DashboardPage extends React.Component {
       walmartResults: [],
       search: '',
       amazonPrice: '',
-      ebayObject: {},
+      ebayTitle: '',
+      ebayImage: '',
+      ebayPrice: '',
+      ebayShipping: '',
+      ebayURL: '',
     };
     this.handleInputChangeQuery = this.handleInputChangeQuery.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
