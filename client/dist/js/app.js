@@ -15759,7 +15759,7 @@ var DashboardPage = function (_React$Component) {
                 _react2.default.createElement('img', { src: this.state.medimage })
               ) : _react2.default.createElement(
                 'h3',
-                null,
+                { className: 'text-center' },
                 'No Amazon Results to Display'
               ),
               this.state.ebayTitle ? _react2.default.createElement(
@@ -15794,7 +15794,7 @@ var DashboardPage = function (_React$Component) {
                 _react2.default.createElement('img', { src: this.state.ebayImage })
               ) : _react2.default.createElement(
                 'h3',
-                null,
+                { className: 'text-center' },
                 'No Ebay Results to Display'
               )
             ) : console.log("hiding")

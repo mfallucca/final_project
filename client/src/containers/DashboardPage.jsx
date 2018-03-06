@@ -229,7 +229,7 @@ class DashboardPage extends React.Component {
               <img src= {this.state.medimage}></img>
             </Container>
           ) : (
-            <h3>No Amazon Results to Display</h3>
+            <h3 className = "text-center">No Amazon Results to Display</h3>
           )}
             {this.state.ebayTitle ? (
               <Container>
@@ -239,7 +239,7 @@ class DashboardPage extends React.Component {
                 <img src={this.state.ebayImage}></img>
               </Container>
             ) : (
-              <h3>No Ebay Results to Display</h3>
+              <h3 className = "text-center">No Ebay Results to Display</h3>
             )}
           </Col>
             ) : (
