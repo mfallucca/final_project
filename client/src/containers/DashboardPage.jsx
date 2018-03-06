@@ -165,9 +165,9 @@ class DashboardPage extends React.Component {
         <Col size="md-6 sm-6">
           {this.state.upc ? (
               <Jumbotron>
-                <p><a href = {this.state.ebayURL}>{this.state.ebayTitle}</a></p>
+                <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
                 <p> Price: {this.state.ebayPrice}</p><p> Shipping: {this.state.ebayShipping}</p>
-                <img src= {this.state.ebayImage}></img>
+                <img src={this.state.ebayImage}></img>
               </Jumbotron>
             ) : (
               <h3>No Results to Display</h3>
