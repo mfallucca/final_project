@@ -168,7 +168,33 @@ class DashboardPage extends React.Component {
         </Container><br />
         <Container fluid>
         <Row>
-          <Col size="sm-6 md-6">
+          {!this.state.show ? (
+            <Col size="sm-12 md-12">
+                          {this.state.walmartResults.length ? (
+                <SearchList>
+                  {this.state.walmartResults.map(walmartContainer => (
+                    <SearchListItem key={walmartContainer._id}>
+                      <a href={walmartContainer.productUrl}>
+                        <strong>
+                          {walmartContainer.name}
+                        </strong>
+                      </a>
+                      <p>
+                          ${walmartContainer.salePrice}
+                      </p>
+                      <CompareBtn
+                        upc={walmartContainer.upc}
+                        handleCompareClick={this.handleCompareClick}
+                      />
+                    </SearchListItem>
+                  ))}
+                </SearchList>
+            ) : (
+              <h3 className = "text-center">Please Search Using the Box Above!</h3>
+            )}
+          </Col>
+          ) : (
+            <Col size="sm-6 md-6">
               {this.state.walmartResults.length ? (
                 <SearchList>
                   {this.state.walmartResults.map(walmartContainer => (
@@ -192,43 +218,34 @@ class DashboardPage extends React.Component {
               <h3>Please Search Using the Box Above!</h3>
             )}
           </Col>
+          )}
           {this.state.show ? (
-          <Col size="md-6 sm-6">
+            <Col size="md-6 sm-6">
           {this.state.url ? (
-              <Jumbotron>
-                <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
-                <p>{this.state.amazonPrice}</p>
-                <img src= {this.state.medimage}></img>
-              </Jumbotron>
-            ) : (
-              <h3>No Amazon Results to Display</h3>
-            )}
-          </Col>
-                ) : (
-                  console.log("hiding")
-                )}
-        </Row>
-
-        {this.state.show ? (
-
-
-        <Row>
-          {/* EBAY RETURNED INFO */}
-        <Col size="md-6 sm-6">
-          {this.state.ebayTitle ? (
-              <Jumbotron>
+            <Container>
+              <h2>Amazon.com's Best Match:</h2>
+              <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
+              <p>{this.state.amazonPrice}</p>
+              <img src= {this.state.medimage}></img>
+            </Container>
+          ) : (
+            <h3>No Amazon Results to Display</h3>
+          )}
+            {this.state.ebayTitle ? (
+              <Container>
+                <h2>eBay.com's Best Match:</h2>
                 <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
                 <p> Price: {this.state.ebayPrice}</p><p> Shipping: {this.state.ebayShipping}</p>
                 <img src={this.state.ebayImage}></img>
-              </Jumbotron>
+              </Container>
             ) : (
               <h3>No Ebay Results to Display</h3>
             )}
           </Col>
+            ) : (
+              console.log("hiding")
+            )}
         </Row>
-        ) : (
-          console.log("hiding")
-        )}
       </Container><br />
 
 
