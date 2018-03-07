@@ -35,6 +35,7 @@ class DashboardPage extends React.Component {
     this.loadAmazon = this.loadAmazon.bind(this);
     this.loadEbay = this.loadEbay.bind(this);
     this.loadBoth = this.loadBoth.bind(this);
+    this.addSaved = this.addSaved.bind(this);
   }
 
   handleInputChangeQuery(event) {
@@ -66,6 +67,7 @@ class DashboardPage extends React.Component {
     }
   });
   walmartxhr.send();
+  this.addSaved()
 
   };
 
@@ -79,6 +81,7 @@ class DashboardPage extends React.Component {
     // set the authorization HTTP header
     xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
     xhr.responseType = 'json';
+
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         this.setState({
@@ -94,7 +97,6 @@ class DashboardPage extends React.Component {
   loadAmazon() {
     const amazonxhr = new XMLHttpRequest();
     let upc = this.state.upc
-    console.log(amazonxhr);
     amazonxhr.open('get', '/api/amazon/' + upc);
     amazonxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     // set the authorization HTTP header
@@ -122,7 +124,33 @@ class DashboardPage extends React.Component {
   amazonxhr.send();
 }
 
-// method to call the Ebay API
+// method to call the Saved API
+  addSaved() {
+    const savedxhr = new XMLHttpRequest();
+    let email = this.state.user.email;
+    console.log(email)
+    let savedTerm = this.state.search;
+    console.log(savedTerm)
+    savedxhr.open('get', '/api/saved/' + email + "/" + savedTerm);
+    savedxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // set the authorization HTTP header
+    savedxhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    savedxhr.responseType = 'json';
+    savedxhr.addEventListener('load', () => {
+    // console.log(savedxhr)
+  //   if (savedxhr.status === 200 && savedxhr.response.savedURL) {
+  //   this.setState({
+  //     savedTitle: savedxhr.response.ebayTitle,
+  //     ebayImage: ebayxhr.response.ebayImage,
+  //     ebayPrice: ebayxhr.response.ebayPrice,
+  //     ebayShipping: ebayxhr.response.ebayShipping,
+  //     ebayURL: ebayxhr.response.ebayURL
+  //   })
+  // }
+  });
+  savedxhr.send();
+  }
+
 
   loadEbay() {
     const ebayxhr = new XMLHttpRequest();

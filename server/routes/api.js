@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('mongoose').model('User');
 const amazon = require('amazon-product-api');
 var Ebay = require('ebay')
 var ebay = new Ebay({
@@ -83,9 +84,16 @@ ebay.get('finding', params, function (err, data) {
     });
 });
 });
-// router.get('/ebay/:upc', (req, res) => {
-//   var search = 
-// })
+
+
+router.get('/saved/:email/:searchTerm', (req, res, next) => {
+  let currentEmail = req.params.email
+  let currentSearch = req.params.searchTerm
+  db.findOneAndUpdate(
+    { email: currentEmail },
+    { $push: { saved: currentSearch } }
+ )
+});
 
 
 // http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MatthewF-finalpro-PRD-de44c9784-2b97810c&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&globalId=EBAY-US&keywords=633472002908&sortOrder=PricePlusShippingLowest

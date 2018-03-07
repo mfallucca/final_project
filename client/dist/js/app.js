@@ -16411,6 +16411,7 @@ var DashboardPage = function (_React$Component) {
     _this.loadAmazon = _this.loadAmazon.bind(_this);
     _this.loadEbay = _this.loadEbay.bind(_this);
     _this.loadBoth = _this.loadBoth.bind(_this);
+    _this.addSaved = _this.addSaved.bind(_this);
     return _this;
   }
 
@@ -16448,6 +16449,7 @@ var DashboardPage = function (_React$Component) {
         }
       });
       walmartxhr.send();
+      this.addSaved();
     }
   }, {
     key: 'componentDidMount',
@@ -16465,6 +16467,7 @@ var DashboardPage = function (_React$Component) {
       // set the authorization HTTP header
       xhr.setRequestHeader('Authorization', 'bearer ' + _Auth2.default.getToken());
       xhr.responseType = 'json';
+
       xhr.addEventListener('load', function () {
         if (xhr.status === 200) {
           _this3.setState({
@@ -16484,7 +16487,6 @@ var DashboardPage = function (_React$Component) {
 
       var amazonxhr = new XMLHttpRequest();
       var upc = this.state.upc;
-      console.log(amazonxhr);
       amazonxhr.open('get', '/api/amazon/' + upc);
       amazonxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       // set the authorization HTTP header
@@ -16511,8 +16513,35 @@ var DashboardPage = function (_React$Component) {
       amazonxhr.send();
     }
 
-    // method to call the Ebay API
+    // method to call the Saved API
 
+  }, {
+    key: 'addSaved',
+    value: function addSaved() {
+      var savedxhr = new XMLHttpRequest();
+      var email = this.state.user.email;
+      console.log(email);
+      var savedTerm = this.state.search;
+      console.log(savedTerm);
+      savedxhr.open('get', '/api/saved/' + email + "/" + savedTerm);
+      savedxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      // set the authorization HTTP header
+      savedxhr.setRequestHeader('Authorization', 'bearer ' + _Auth2.default.getToken());
+      savedxhr.responseType = 'json';
+      savedxhr.addEventListener('load', function () {
+        // console.log(savedxhr)
+        //   if (savedxhr.status === 200 && savedxhr.response.savedURL) {
+        //   this.setState({
+        //     savedTitle: savedxhr.response.ebayTitle,
+        //     ebayImage: ebayxhr.response.ebayImage,
+        //     ebayPrice: ebayxhr.response.ebayPrice,
+        //     ebayShipping: ebayxhr.response.ebayShipping,
+        //     ebayURL: ebayxhr.response.ebayURL
+        //   })
+        // }
+      });
+      savedxhr.send();
+    }
   }, {
     key: 'loadEbay',
     value: function loadEbay() {
