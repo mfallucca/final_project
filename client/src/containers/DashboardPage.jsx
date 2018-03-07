@@ -27,7 +27,8 @@ class DashboardPage extends React.Component {
       ebayPrice: '',
       ebayShipping: '',
       ebayURL: '',
-      show: false
+      show: false,
+      saved: []
     };
     this.handleInputChangeQuery = this.handleInputChangeQuery.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -138,15 +139,12 @@ class DashboardPage extends React.Component {
     savedxhr.responseType = 'json';
     savedxhr.addEventListener('load', () => {
     // console.log(savedxhr)
-  //   if (savedxhr.status === 200 && savedxhr.response.savedURL) {
-  //   this.setState({
-  //     savedTitle: savedxhr.response.ebayTitle,
-  //     ebayImage: ebayxhr.response.ebayImage,
-  //     ebayPrice: ebayxhr.response.ebayPrice,
-  //     ebayShipping: ebayxhr.response.ebayShipping,
-  //     ebayURL: ebayxhr.response.ebayURL
-  //   })
-  // }
+    if (savedxhr.status === 200) {
+    this.setState({
+      saved: savedxhr.response.savedResults
+    })
+    console.log(this.state.saved)
+  }
   });
   savedxhr.send();
   }
@@ -278,6 +276,20 @@ class DashboardPage extends React.Component {
               </Container>
             ) : (
               <h3 className = "text-center">No Ebay Results to Display</h3>
+            )}
+            {this.state.saved.length ? (
+              <SearchList>
+                <h2>Previous Search Terms:</h2>
+              {this.state.saved.map(savedContainer => (
+                <SearchListItem>
+                    <strong>
+                      {savedContainer}
+                    </strong>
+                </SearchListItem>
+              ))}
+              </SearchList>
+            ) : (
+              <h3 className = "text-center">No previous searches to display</h3>
             )}
           </Col>
             ) : (

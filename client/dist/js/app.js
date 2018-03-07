@@ -16403,7 +16403,8 @@ var DashboardPage = function (_React$Component) {
       ebayPrice: '',
       ebayShipping: '',
       ebayURL: '',
-      show: false
+      show: false,
+      saved: []
     };
     _this.handleInputChangeQuery = _this.handleInputChangeQuery.bind(_this);
     _this.handleFormSubmit = _this.handleFormSubmit.bind(_this);
@@ -16518,6 +16519,8 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'addSaved',
     value: function addSaved() {
+      var _this5 = this;
+
       var savedxhr = new XMLHttpRequest();
       var email = this.state.user.email;
       console.log(email);
@@ -16530,22 +16533,19 @@ var DashboardPage = function (_React$Component) {
       savedxhr.responseType = 'json';
       savedxhr.addEventListener('load', function () {
         // console.log(savedxhr)
-        //   if (savedxhr.status === 200 && savedxhr.response.savedURL) {
-        //   this.setState({
-        //     savedTitle: savedxhr.response.ebayTitle,
-        //     ebayImage: ebayxhr.response.ebayImage,
-        //     ebayPrice: ebayxhr.response.ebayPrice,
-        //     ebayShipping: ebayxhr.response.ebayShipping,
-        //     ebayURL: ebayxhr.response.ebayURL
-        //   })
-        // }
+        if (savedxhr.status === 200) {
+          _this5.setState({
+            saved: savedxhr.response.savedResults
+          });
+          console.log(_this5.state.saved);
+        }
       });
       savedxhr.send();
     }
   }, {
     key: 'loadEbay',
     value: function loadEbay() {
-      var _this5 = this;
+      var _this6 = this;
 
       var ebayxhr = new XMLHttpRequest();
       var upc = this.state.upc;
@@ -16557,7 +16557,7 @@ var DashboardPage = function (_React$Component) {
       ebayxhr.addEventListener('load', function () {
         // console.log(ebayxhr)
         if (ebayxhr.status === 200 && ebayxhr.response.ebayURL) {
-          _this5.setState({
+          _this6.setState({
             ebayTitle: ebayxhr.response.ebayTitle,
             ebayImage: ebayxhr.response.ebayImage,
             ebayPrice: ebayxhr.response.ebayPrice,
@@ -16565,7 +16565,7 @@ var DashboardPage = function (_React$Component) {
             ebayURL: ebayxhr.response.ebayURL
           });
         } else {
-          _this5.setState({
+          _this6.setState({
             ebayTitle: '',
             ebayImage: '',
             ebayPrice: '',
@@ -16592,7 +16592,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
 
       return _react2.default.createElement(
         'div',
@@ -16640,7 +16640,7 @@ var DashboardPage = function (_React$Component) {
                     ),
                     _react2.default.createElement(_CompareBtn2.default, {
                       upc: walmartContainer.upc,
-                      handleCompareClick: _this6.handleCompareClick
+                      handleCompareClick: _this7.handleCompareClick
                     })
                   );
                 })
@@ -16676,7 +16676,7 @@ var DashboardPage = function (_React$Component) {
                     ),
                     _react2.default.createElement(_CompareBtn2.default, {
                       upc: walmartContainer.upc,
-                      handleCompareClick: _this6.handleCompareClick
+                      handleCompareClick: _this7.handleCompareClick
                     })
                   );
                 })
@@ -16752,6 +16752,30 @@ var DashboardPage = function (_React$Component) {
                 'h3',
                 { className: 'text-center' },
                 'No Ebay Results to Display'
+              ),
+              this.state.saved.length ? _react2.default.createElement(
+                _Search.SearchList,
+                null,
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Previous Search Terms:'
+                ),
+                this.state.saved.map(function (savedContainer) {
+                  return _react2.default.createElement(
+                    _Search.SearchListItem,
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      savedContainer
+                    )
+                  );
+                })
+              ) : _react2.default.createElement(
+                'h3',
+                { className: 'text-center' },
+                'No previous searches to display'
               )
             ) : console.log("hiding")
           )
