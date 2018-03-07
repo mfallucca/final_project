@@ -210,7 +210,7 @@ class DashboardPage extends React.Component {
                           {this.state.walmartResults.length ? (
                 <SearchList>
                   {this.state.walmartResults.map(walmartContainer => (
-                    <SearchListItem key={walmartContainer._id}>
+                    <SearchListItem key={walmartContainer.itemId}>
                       <a href={walmartContainer.productUrl}>
                         <strong>
                           {walmartContainer.name}
@@ -235,7 +235,7 @@ class DashboardPage extends React.Component {
               {this.state.walmartResults.length ? (
                 <SearchList>
                   {this.state.walmartResults.map(walmartContainer => (
-                    <SearchListItem key={walmartContainer._id}>
+                    <SearchListItem key={walmartContainer.itemId}>
                       <a href={walmartContainer.productUrl}>
                         <strong>
                           {walmartContainer.name}

@@ -16622,7 +16622,7 @@ var DashboardPage = function (_React$Component) {
                 this.state.walmartResults.map(function (walmartContainer) {
                   return _react2.default.createElement(
                     _Search.SearchListItem,
-                    { key: walmartContainer._id },
+                    { key: walmartContainer.itemId },
                     _react2.default.createElement(
                       'a',
                       { href: walmartContainer.productUrl },
@@ -16658,7 +16658,7 @@ var DashboardPage = function (_React$Component) {
                 this.state.walmartResults.map(function (walmartContainer) {
                   return _react2.default.createElement(
                     _Search.SearchListItem,
-                    { key: walmartContainer._id },
+                    { key: walmartContainer.itemId },
                     _react2.default.createElement(
                       'a',
                       { href: walmartContainer.productUrl },

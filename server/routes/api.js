@@ -89,10 +89,12 @@ ebay.get('finding', params, function (err, data) {
 router.get('/saved/:email/:searchTerm', (req, res, next) => {
   let currentEmail = req.params.email
   let currentSearch = req.params.searchTerm
+  console.log("starting db update")
   db.findOneAndUpdate(
     { email: currentEmail },
     { $push: { saved: currentSearch } }
  )
+ console.log("end db update")
 });
 
 
