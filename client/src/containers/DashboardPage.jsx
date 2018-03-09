@@ -245,7 +245,7 @@ class DashboardPage extends React.Component {
             </div>
             )}
             {this.state.show ? (
-          <div>
+          <div className="ebayAmazonSection">
             {this.state.url ? (
             <div className="amazonWindow">
               <h2 className="amazonHeader">Amazon.com's Best Match</h2>
@@ -261,10 +261,12 @@ class DashboardPage extends React.Component {
             {this.state.ebayTitle ? (
               <div className="ebayWindow">
                 <h2 className="ebayHeader">eBay.com's Best Match:</h2>
-                <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
-                <p> Price: ${this.state.ebayPrice}</p>
-                <p> Shipping: ${this.state.ebayShipping}</p>
-                <img src={this.state.ebayImage}></img>
+                <div className="ebayResult">
+                  <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
+                  <p> Price: ${this.state.ebayPrice}</p>
+                  <p> Shipping: ${this.state.ebayShipping}</p>
+                  <img src={this.state.ebayImage}></img>
+                </div>
               </div>
             ) : (
               <h3 className = "text-center">No Ebay Results to Display</h3>

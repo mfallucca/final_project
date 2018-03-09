@@ -15726,7 +15726,7 @@ var CompareBtn = function CompareBtn(props) {
       className: "compareButton",
       value: props.upc,
       onClick: props.handleCompareClick },
-    _react2.default.createElement("i", { "class": "fas fa-arrow-right" })
+    _react2.default.createElement("i", { "class": "fa fa-arrow-right" })
   );
 };
 
@@ -16970,7 +16970,7 @@ var DashboardPage = function (_React$Component) {
         ),
         this.state.show ? _react2.default.createElement(
           'div',
-          null,
+          { className: 'ebayAmazonSection' },
           this.state.url ? _react2.default.createElement(
             'div',
             { className: 'amazonWindow' },
@@ -17012,27 +17012,31 @@ var DashboardPage = function (_React$Component) {
               'eBay.com\'s Best Match:'
             ),
             _react2.default.createElement(
-              'p',
-              null,
+              'div',
+              { className: 'ebayResult' },
               _react2.default.createElement(
-                'a',
-                { href: this.state.ebayURL },
-                this.state.ebayTitle
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              ' Price: $',
-              this.state.ebayPrice
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              ' Shipping: $',
-              this.state.ebayShipping
-            ),
-            _react2.default.createElement('img', { src: this.state.ebayImage })
+                'p',
+                null,
+                _react2.default.createElement(
+                  'a',
+                  { href: this.state.ebayURL },
+                  this.state.ebayTitle
+                )
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                ' Price: $',
+                this.state.ebayPrice
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                ' Shipping: $',
+                this.state.ebayShipping
+              ),
+              _react2.default.createElement('img', { src: this.state.ebayImage })
+            )
           ) : _react2.default.createElement(
             'h3',
             { className: 'text-center' },
