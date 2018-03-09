@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Logo from "./images/pickitLogo.png";
+import Form from "./components/Form";
 // import routes from './routes.js';
 import './Main.css';
 
@@ -84,7 +86,7 @@ class Main extends Component {
         <Router>
           <div className="pageWrapper">
 
-          {/* {this.state.authenticated ? (
+          {this.state.authenticated ? (
             <div className="navBar">
               <div id="homeTitle"><a href="/"><img src={Logo} alt="pickitLogo"/></a></div>
               <div id="homeTitleTwo"><a href="/"><img src={Logo} alt="pickitLogo"/></a></div> 
@@ -102,11 +104,11 @@ class Main extends Component {
               <div id="signupButton"><Link to='/signup'><a href="/signup">Sign Up</a></Link></div>
               <div id="loginButton"><Link to='/login'><a href="/login">Log In</a></Link></div>
             </div>
-              )} */}
+              )}
 
 
 
-            <div className="top-bar">
+            {/* <div className="top-bar">
               <div className="top-bar-left">
                 <Link to="/">Pick It or Ship It?</Link>
               </div>
@@ -122,7 +124,7 @@ class Main extends Component {
                   <Link to="/signup">Sign up</Link>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <PrivateRoute path="/dashboard" component={DashboardPage}/>

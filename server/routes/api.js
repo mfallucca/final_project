@@ -74,7 +74,7 @@ let params = {
 };
 
 ebay.get('finding', params, function (err, data) {
-  if(err) throw err;
+  // if(err) throw err;
     res.status(200).json({
       ebayTitle: data.findItemsAdvancedResponse[0].searchResult[0].item[0].title[0],
       ebayImage: data.findItemsAdvancedResponse[0].searchResult[0].item[0].galleryURL[0],
