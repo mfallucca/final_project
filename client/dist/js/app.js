@@ -15448,7 +15448,7 @@ var PrivateRoute = function PrivateRoute(_ref) {
 
   return _react2.default.createElement(_reactRouterDom.Route, _extends({}, rest, { render: function render(props) {
       return _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(Component, _extends({}, props, rest)) : _react2.default.createElement(_reactRouterDom.Redirect, { to: {
-          pathname: '/',
+          pathname: '/dashboard',
           state: { from: props.location }
         } });
     } }));
@@ -15510,7 +15510,7 @@ var Main = function (_Component) {
         _MuiThemeProvider2.default,
         { muiTheme: (0, _getMuiTheme2.default)() },
         _react2.default.createElement(
-          _reactRouterDom.BrowserRouter,
+          _reactRouterDom.HashRouter,
           null,
           _react2.default.createElement(
             'div',
@@ -15523,7 +15523,7 @@ var Main = function (_Component) {
                 { id: 'homeTitle' },
                 _react2.default.createElement(
                   'a',
-                  { href: '/' },
+                  { href: '#/dashboard' },
                   _react2.default.createElement('img', { src: _pickitLogo2.default, alt: 'pickitLogo' })
                 )
               ),
@@ -15532,7 +15532,7 @@ var Main = function (_Component) {
                 { id: 'homeTitleTwo' },
                 _react2.default.createElement(
                   'a',
-                  { href: '/' },
+                  { href: '#/dashboard' },
                   _react2.default.createElement('img', { src: _pickitLogo2.default, alt: 'pickitLogo' })
                 )
               ),

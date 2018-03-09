@@ -12,7 +12,8 @@ import {
   Route,
   Link,
   Redirect,
-  withRouter
+  withRouter,
+  HashRouter
 } from 'react-router-dom'
 
 import Navbar from "./components/Navbar"
@@ -35,7 +36,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       <Component {...props} {...rest} />
     ) : (
       <Redirect to={{
-        pathname: '/',
+        pathname: '/dashboard',
         state: { from: props.location }
       }}/>
     )
@@ -83,13 +84,13 @@ class Main extends Component {
     return (
 
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <Router>
+        <HashRouter>
           <div className="pageWrapper">
 
           {this.state.authenticated ? (
             <div className="navBar">
-              <div id="homeTitle"><a href="/"><img src={Logo} alt="pickitLogo"/></a></div>
-              <div id="homeTitleTwo"><a href="/"><img src={Logo} alt="pickitLogo"/></a></div> 
+              <div id="homeTitle"><a href="#/dashboard"><img src={Logo} alt="pickitLogo"/></a></div>
+              <div id="homeTitleTwo"><a href="#/dashboard"><img src={Logo} alt="pickitLogo"/></a></div> 
               <Form/>
               <div id="logoutButtonOne"><Link to='/logout'><a id="logoutOne" href="/logout">Log out</a></Link></div>
               <div id="logoutButtonTwo"><Link to='/logout'><a id="logoutTwo" href="/logout">Log out</a></Link></div>
@@ -133,7 +134,7 @@ class Main extends Component {
             <Route path="/logout" component={LogoutFunction}/>
           </div>
 
-        </Router>
+        </HashRouter>
       </MuiThemeProvider>
     );
   }
