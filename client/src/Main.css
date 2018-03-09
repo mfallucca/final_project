@@ -245,15 +245,19 @@ loginButton a {
 }
     /* WALMART SECTION END */
 
+.ebayAmazonSection{
+    grid-column: 5/9;
+}
+
     /* AMAZON SECTION START */
 .amazonWindow {
-    grid-column: 5/9;
     max-height: 300px;
     text-align: center;
     padding: 20px 30px 20px 30px;
     overflow: scroll;
     background-color: #fefefeec;
     border-radius: 10px;
+    margin-bottom: 24px;
 }
 .amazonHeader {
     font-size: 32px;
@@ -274,10 +278,8 @@ loginButton a {
 }
     /* AMAZON SECTION END */
 
-
     /* EBAY SECTION START */
 .ebayWindow {
-    grid-column: 5/9;
     max-height: 300px;
     text-align: center;
     padding: 20px 30px 20px 30px;
