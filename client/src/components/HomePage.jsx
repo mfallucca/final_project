@@ -11,14 +11,22 @@ class HomePage extends React.Component {
 
   render() {
     return (
+      <div>
+      <br />
       <Card className="container">
-        <CardTitle title="React Application" subtitle="This is the home page." />
+        <CardTitle title="Welcome to Pick It Up or Ship It Out!" />
           {Auth.isUserAuthenticated() ? (
             <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
           ) : (
+            <div>
             <CardText style={{ fontSize: '16px', color: 'green' }}>You are not logged in.</CardText>
+            <h4 class="form-signin-heading text-center">New user?  Sign up <a href = "#/signup">here</a></h4>
+            <h4 class="form-signin-heading text-center">Already have an account?  Log in <a href = "#/login">here</a></h4>
+            <br />
+            </div>
           )}
       </Card>
+      </div>
     )
   }
 };

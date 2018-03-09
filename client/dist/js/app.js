@@ -9413,7 +9413,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Navbar = __webpack_require__(207);
+var _Navbar = __webpack_require__(209);
 
 Object.defineProperty(exports, "default", {
   enumerable: true,
@@ -15395,7 +15395,7 @@ var _Navbar = __webpack_require__(120);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _Navbar3 = __webpack_require__(209);
+var _Navbar3 = __webpack_require__(208);
 
 var _Navbar4 = _interopRequireDefault(_Navbar3);
 
@@ -15726,7 +15726,7 @@ var CompareBtn = function CompareBtn(props) {
       className: "compareButton",
       value: props.upc,
       onClick: props.handleCompareClick },
-    _react2.default.createElement("i", { "class": "fa fa-arrow-right" })
+    _react2.default.createElement("i", { "class": "fas fa-arrow-right" })
   );
 };
 
@@ -16045,17 +16045,47 @@ var HomePage = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _Card.Card,
-        { className: 'container' },
-        _react2.default.createElement(_Card.CardTitle, { title: 'React Application', subtitle: 'This is the home page.' }),
-        _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(
-          _Card.CardText,
-          { style: { fontSize: '16px', color: 'green' } },
-          'Welcome! You are logged in.'
-        ) : _react2.default.createElement(
-          _Card.CardText,
-          { style: { fontSize: '16px', color: 'green' } },
-          'You are not logged in.'
+        'div',
+        null,
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          _Card.Card,
+          { className: 'container' },
+          _react2.default.createElement(_Card.CardTitle, { title: 'Welcome to Pick It Up or Ship It Out!' }),
+          _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(
+            _Card.CardText,
+            { style: { fontSize: '16px', color: 'green' } },
+            'Welcome! You are logged in.'
+          ) : _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              _Card.CardText,
+              { style: { fontSize: '16px', color: 'green' } },
+              'You are not logged in.'
+            ),
+            _react2.default.createElement(
+              'h4',
+              { 'class': 'form-signin-heading text-center' },
+              'New user?  Sign up ',
+              _react2.default.createElement(
+                'a',
+                { href: '#/signup' },
+                'here'
+              )
+            ),
+            _react2.default.createElement(
+              'h4',
+              { 'class': 'form-signin-heading text-center' },
+              'Already have an account?  Log in ',
+              _react2.default.createElement(
+                'a',
+                { href: '#/login' },
+                'here'
+              )
+            ),
+            _react2.default.createElement('br', null)
+          )
         )
       );
     }
@@ -16282,20 +16312,20 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonOne" },
+            { id: "signupButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutOne", href: "/logout" },
-                "Log out"
+                { href: "/signup" },
+                "Sign Up"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonTwo" },
+            { id: "loginButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutTwo", href: "/logout" },
-                "Log out"
+                { href: "/login" },
+                "Log In"
             )
         )
     );
@@ -16305,6 +16335,28 @@ exports.default = Navbar;
 
 /***/ }),
 /* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Navbar = __webpack_require__(207);
+
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Navbar).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16353,48 +16405,26 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "signupButton" },
+            { id: "logoutButtonOne" },
             _react2.default.createElement(
                 "a",
-                { href: "/signup" },
-                "Sign Up"
+                { id: "logoutOne", href: "/logout" },
+                "Log out"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "loginButton" },
+            { id: "logoutButtonTwo" },
             _react2.default.createElement(
                 "a",
-                { href: "/login" },
-                "Log In"
+                { id: "logoutTwo", href: "/logout" },
+                "Log out"
             )
         )
     );
 };
 
 exports.default = Navbar;
-
-/***/ }),
-/* 209 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Navbar = __webpack_require__(208);
-
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Navbar).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 210 */
