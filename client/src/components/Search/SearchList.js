@@ -3,8 +3,8 @@ import "./List.css";
 
 export const SearchList = ({ children }) => {
   return (
-    <div className="list-overflow-container">
-      <ul className="list-group">
+    <div className="walmartResults">
+      <ul>
         {children}
       </ul>
     </div>

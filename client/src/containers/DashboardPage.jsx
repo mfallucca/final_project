@@ -6,6 +6,7 @@ import Jumbotron from "../components/Jumbotron";
 import SearchForm from "../components/Form";
 import { SearchList, SearchListItem  } from "../components/Search";
 import CompareBtn from "../components/CompareBtn";
+import Navbar from "../components/Navbar";
 class DashboardPage extends React.Component {
   /**
    * Class constructor.
@@ -193,8 +194,107 @@ class DashboardPage extends React.Component {
    */
   render() {
     return (
-      <div>
-        <Dashboard user={this.state.user} />
+      <div className='mainContent'>
+      <SearchForm 
+            handleFormSubmit={this.handleFormSubmit}
+            handleInputChangeQuery={this.handleInputChangeQuery}
+          />
+          {!this.state.show ? (
+            <div className="walmartWindowFull">
+            <h1 className="walmartHeader">Walmart Results</h1>
+            {this.state.walmartResults.length ? (
+                <SearchList>
+                  {this.state.walmartResults.map(walmartContainer => (
+                    <SearchListItem key={walmartContainer.itemId}>
+                      <a href={walmartContainer.productUrl}>
+                        <p>{walmartContainer.name}</p>
+                      </a>
+                      <p>${walmartContainer.salePrice}</p>
+                      <CompareBtn
+                        upc={walmartContainer.upc}
+                        handleCompareClick={this.handleCompareClick}
+                      />
+                    </SearchListItem>
+                  ))}
+                  </SearchList>
+                ) : (
+                  <h3 className = "text-center">Please Search Using the Box Above!</h3>
+                )}
+            </div>
+            ) : (
+            <div className="walmartWindowHalf">
+            <h1 className="walmartHeader">Walmart Results</h1>
+            {this.state.walmartResults.length ? (
+                <SearchList>
+                  {this.state.walmartResults.map(walmartContainer => (
+                    <SearchListItem key={walmartContainer.itemId}>
+                      <a href={walmartContainer.productUrl}>
+                        <p>{walmartContainer.name}</p>
+                      </a>
+                      <p>${walmartContainer.salePrice}</p>
+                      <CompareBtn
+                        upc={walmartContainer.upc}
+                        handleCompareClick={this.handleCompareClick}
+                      />
+                    </SearchListItem>
+                  ))}
+                  </SearchList>
+                ) : (
+                  <h3 className = "text-center">Please Search Using the Box Above!</h3>
+                )}
+            </div>
+            )}
+            {this.state.show ? (
+          <div>
+            {this.state.url ? (
+            <div className="amazonWindow">
+              <h2 className="amazonHeader">Amazon.com's Best Match</h2>
+              <div className="amazonResult">
+                <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
+                <p>{this.state.amazonPrice}</p>
+                <img src= {this.state.medimage}></img>
+              </div>
+            </div>
+          ) : (
+            <h3 className = "text-center">No Amazon Results to Display</h3>
+          )}
+            {this.state.ebayTitle ? (
+              <div className="ebayWindow">
+                <h2 className="ebayHeader">eBay.com's Best Match:</h2>
+                <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
+                <p> Price: ${this.state.ebayPrice}</p>
+                <p> Shipping: ${this.state.ebayShipping}</p>
+                <img src={this.state.ebayImage}></img>
+              </div>
+            ) : (
+              <h3 className = "text-center">No Ebay Results to Display</h3>
+            )}
+            {this.state.saved.length ? (
+              <SearchList>
+                <h2>Previous Search Terms:</h2>
+              {this.state.saved.map(savedContainer => (
+                <SearchListItem>
+                    <strong>
+                      {savedContainer}
+                    </strong>
+                </SearchListItem>
+              ))}
+              </SearchList>
+            ) : (
+              <h3 className = "text-center">No previous searches to display</h3>
+            )}
+          </div>
+            ) : (
+              console.log("hiding")
+            )}
+            </div>
+    )
+  }
+};
+
+
+
+        {/* <Dashboard user={this.state.user} />
         <Container>
           <SearchForm 
             handleFormSubmit={this.handleFormSubmit}
@@ -299,8 +399,8 @@ class DashboardPage extends React.Component {
       </Container><br />
 
 
-      </div>
-    );
-  }
-}
+      </div> */}
+//     );
+//   }
+// }
 export default DashboardPage;

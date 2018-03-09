@@ -4,11 +4,12 @@ import "./CompareBtn.css";
 // That way we don't have to define them all individually
 const CompareBtn = props => (
   <button
+  className="compareButton"
   value={props.upc}
-  onClick={props.handleCompareClick}
->
-  Compare!
-</button>
+  onClick={props.handleCompareClick}>
+    <i class="fas fa-arrow-right"></i>
+  </button>
 );
+
 
 export default CompareBtn;

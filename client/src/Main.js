@@ -3,6 +3,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import routes from './routes.js';
+import './Main.css';
 
 import {
   BrowserRouter as Router,
@@ -11,6 +12,9 @@ import {
   Redirect,
   withRouter
 } from 'react-router-dom'
+
+import Navbar from "./components/Navbar"
+import Navbar2 from "./components/Navbar2"
 
 import Base from './components/Base.jsx';
 import HomePage from './components/HomePage.jsx';
@@ -75,9 +79,33 @@ class Main extends Component {
 
   render() {
     return (
+
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Router>
-          <div>
+          <div className="pageWrapper">
+
+          {/* {this.state.authenticated ? (
+            <div className="navBar">
+              <div id="homeTitle"><a href="/"><img src={Logo} alt="pickitLogo"/></a></div>
+              <div id="homeTitleTwo"><a href="/"><img src={Logo} alt="pickitLogo"/></a></div> 
+              <Form/>
+              <div id="logoutButtonOne"><Link to='/logout'><a id="logoutOne" href="/logout">Log out</a></Link></div>
+              <div id="logoutButtonTwo"><Link to='/logout'><a id="logoutTwo" href="/logout">Log out</a></Link></div>
+            </div>
+              ) : (
+
+    
+            <div className="navBar">
+              <div id="homeTitle"><Link to='/'><a href="/"><img src={Logo} alt="pickitLogo"/></a></Link></div>
+              <div id="homeTitleTwo"><Link to='/'><a href="/"><img src={Logo} alt="pickitLogo"/></a></Link></div> 
+              <Form/>
+              <div id="signupButton"><Link to='/signup'><a href="/signup">Sign Up</a></Link></div>
+              <div id="loginButton"><Link to='/login'><a href="/login">Log In</a></Link></div>
+            </div>
+              )} */}
+
+
+
             <div className="top-bar">
               <div className="top-bar-left">
                 <Link to="/">Pick It or Ship It?</Link>
@@ -94,7 +122,6 @@ class Main extends Component {
                   <Link to="/signup">Sign up</Link>
                 </div>
               )}
-
             </div>
 
             <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />

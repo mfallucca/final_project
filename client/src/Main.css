@@ -1,0 +1,309 @@
+body {
+    font-size: 20px;
+    color: #000000c8;
+    background-color: #fefefe;
+    font-family: 'Slabo 27px', serif;
+}
+.pageWrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url("./images/bench-accounting.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+/* NAVBAR CSS */
+.navBar {
+    position: relative;
+    display: grid;
+    background-image: linear-gradient(139deg, #00C4CC 0%, #7D2AE8 100%);
+    min-height: 78px;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #fefefe4e;
+
+}
+    /* HOME BUTTON */
+
+#homeTitle a img {
+    /* content:url("images/pickItLogo.png"); */
+    height: 74px;
+    width: 74px;
+    opacity: .9;
+}
+#homeTitleTwo a img {
+    /* content:url("images/pickItLogo.png"); */
+    height: 74px;
+    width: 74px;
+    opacity: .3;
+}
+#homeTitle {
+    align-self: end;
+    justify-self: left;
+    padding-left: 12px;
+    position: absolute;
+    grid-column: 1/2;
+    transition: transform 0.8s;
+    z-index: 2;
+}
+#homeTitle:hover {
+    transform: translate(5px, -5px);
+}
+#homeTitleTwo {
+    align-self: end;
+    justify-self: left;
+    padding-left: 12px;
+    position: absolute;
+    grid-column: 1/2;
+    transition: transform 0.8s;
+}
+
+    /* SEARCH INPUT AND BUTTON */
+#formContainer {
+    justify-self: center;
+    align-self: end;
+    padding-bottom: 13px;
+    grid-column: 2/3;
+}
+#navSearchInput {
+    font-size: 18px;
+    font-family: 'Slabo 27px', serif;
+    border-radius: 15px;
+    padding: 0 12px;
+    background-color: #fefefe;
+    opacity: 0.2;
+    width: 330px;
+    height: 46px;
+}
+
+#navSearchInput:hover{
+    background-color: #fefefe;
+    opacity: 0.7;
+}
+#navSearchInput:focus {
+    outline: 0;
+    background-color: #fefefe;
+    opacity: 0.9;
+}
+#navSearchButton {
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: #fefefe;
+    opacity: 0.9;
+    width: 124px;
+    height: 44px;
+    color: #000000;
+    font-family: 'Slabo 27px', serif;
+    margin-left: 12px;
+}
+#navSearchButton:focus{
+    outline: 0;
+}
+#navSearchButton:active{
+    background-color: #fefefe;
+}
+    /* LOGOUT BUTTON */
+#logoutButtonOne {
+    font-size: 22px;
+    justify-self: right;
+    align-self: end;
+    margin: 0 20px 28px 0;
+    padding-right: 26px;
+    position: absolute;
+    grid-column: 3/4;
+    z-index: 2;
+    transition: transform 0.8s;
+}
+
+#logoutButtonOne:hover {
+    opacity: none;
+    transform: translate(5px, -5px);  
+}
+#logoutButtonTwo {
+    font-size: 22px;
+    justify-self: right;
+    align-self: end;
+    margin: 0 20px 28px 0;
+    padding-right: 26px;
+    position: absolute;
+    grid-column: 3/4;
+    transition: transform 0.8s;
+}
+
+#logoutButtonOne a {
+    color: #ffffff;
+    opacity: .7;
+    text-decoration: none;
+}
+
+
+#logoutButtonTwo a {
+    color: #fefefe;
+    opacity: .2;
+    text-decoration: none;
+}
+
+#signupButton {
+    font-size: 22px;
+    justify-self: right;
+    align-self: end;
+    margin: 0 20px 28px 0;
+    padding-right: 26px;
+    grid-column: 3/4;
+
+}
+
+#signupButton a {
+    color: #ffffff;
+    opacity: .7;
+    text-decoration: none;
+}
+
+#loginButton {
+    font-size: 22px;
+    justify-self: right;
+    align-self: end;
+    margin: 0 20px 28px 0;
+    padding-right: 26px;
+    grid-column: 4/5;
+}
+
+loginButton a {
+    color: #ffffff;
+    opacity: .7;
+    text-decoration: none;
+}
+
+/* END OF NAVBAR CSS */
+
+/* START OF MAIN CONTENT CSS */
+
+.mainContent {
+    margin: 50px 70px 0px 70px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 26px;
+    grid-row-gap: 20px;
+}
+    /* WALMART SECTION */
+.walmartWindowFull {
+    grid-column: 2/8;
+    max-height: 660px;
+    text-align: center;
+    padding: 20px 30px 10px 30px;
+    overflow: scroll;
+    background-color: #fefefeec;
+    border-radius: 10px;
+}
+.walmartHeader {
+    font-size: 32px;
+}
+.walmartWindowHalf {
+    grid-column: 1/5;
+    max-height: 600px;
+    text-align: center;
+    padding: 20px 30px 20px 30px;
+    overflow: scroll;
+    background-color: #fefefeec;
+    border-radius: 10px;
+}
+.walmartResults {
+    margin-top: 32px;
+    text-align: left;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.walmartList {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    padding-bottom: 12px;
+}
+.walmartList a {
+    text-decoration: none;
+    color: #000000a1;
+}
+.walmartList a:hover{
+    color: #000000dd;
+}
+.walmartPrice {
+    justify-self: right;
+}
+.compareButton {
+    height: 30px;
+    width: 50px;
+    background-color: #fefefe;
+    justify-self: right;
+}
+.compareButton:hover{
+    -webkit-box-shadow: 0px 1px 3px #6666668a;
+    -moz-box-shadow: 0px 1px 3px #6666668a;
+    box-shadow: -1px 1px 3px #6666668a;
+}
+.compareButton:focus{
+    outline: 0;
+}
+    /* WALMART SECTION END */
+
+    /* AMAZON SECTION START */
+.amazonWindow {
+    grid-column: 5/9;
+    max-height: 300px;
+    text-align: center;
+    padding: 20px 30px 20px 30px;
+    overflow: scroll;
+    background-color: #fefefeec;
+    border-radius: 10px;
+}
+.amazonHeader {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.amazonResult a {
+    text-decoration: none;
+    color: #000000a1;
+}
+.amazonResult p {
+    margin-bottom: 14px;
+}
+.amazonResult a:hover{
+    color: #000000dd;
+}
+.amazonResult img {
+    margin-top: 15px;
+}
+    /* AMAZON SECTION END */
+
+
+    /* EBAY SECTION START */
+.ebayWindow {
+    grid-column: 5/9;
+    max-height: 300px;
+    text-align: center;
+    padding: 20px 30px 20px 30px;
+    overflow: scroll;
+    background-color: #fefefeec;
+    border-radius: 10px;
+}
+.ebayHeader {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.ebayResult a {
+    text-decoration: none;
+    color: #000000a1;
+}
+.ebayResult p {
+    margin-bottom: 14px;
+}
+.ebayResult a:hover{
+    color: #000000dd;
+}
+.ebayResult img {
+    margin-top: 15px;
+}
+
+
+    /* EBAY SECTION END */
+
+/* END OF MAIN CONTENT CSS */
