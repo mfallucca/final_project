@@ -103,15 +103,22 @@ router.get('/saved/:email/:searchTerm', (req, res, next) => {
 });
 });
 
-// router.get('/retrieve/:email', (req, res, next) => {
-//   let currentEmail = req.params.email
-//   db.find({saved})
-//   .then(function(results) {
-//     res.status(200).json({
-//       savedResults: results
-//     })
-//   })
-// })
+router.get('/retrieve/:email', (req, res, next) => {
+  let currentEmail = req.params.email
+  db.find({email: currentEmail}).select('saved -_id').limit(10)
+  .then(function(results) {
+    console.log("results api")
+    console.log(results[0].saved)
+    let prevTen = [];
+    for (let i=results[0].saved.length -1;i>results[0].saved.length - 6;i--) {
+      prevTen.push(results[0].saved[i])
+    }
+    console.log(prevTen);
+    res.status(200).json({
+      savedResults: prevTen
+    })
+  })
+})
 
 // http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MatthewF-finalpro-PRD-de44c9784-2b97810c&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&globalId=EBAY-US&keywords=633472002908&sortOrder=PricePlusShippingLowest
 

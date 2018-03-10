@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import SearchForm from "../components/Form";
 import { SearchList, SearchListItem  } from "../components/Search";
+import { RecentList, RecentListItem  } from "../components/RecentSearches";
 import CompareBtn from "../components/CompareBtn";
 import Navbar from "../components/Navbar";
 const FontAwesome = require('react-fontawesome');
@@ -40,6 +41,7 @@ class DashboardPage extends React.Component {
     this.loadEbay = this.loadEbay.bind(this);
     this.loadBoth = this.loadBoth.bind(this);
     this.addSaved = this.addSaved.bind(this);
+    this.retrieveSaved = this.retrieveSaved.bind(this);
   }
 
   handleInputChangeQuery(event) {
@@ -91,6 +93,7 @@ class DashboardPage extends React.Component {
         this.setState({
           user: xhr.response.user
         });
+        this.retrieveSaved()
       }
     });
     xhr.send();
@@ -152,6 +155,27 @@ class DashboardPage extends React.Component {
   savedxhr.send();
   }
 
+  retrieveSaved() {
+    const retrievexhr = new XMLHttpRequest();
+    let email = this.state.user.email;
+    console.log(email)
+    retrievexhr.open('get', '/api/retrieve/' + email);
+    retrievexhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // set the authorization HTTP header
+    retrievexhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    retrievexhr.responseType = 'json';
+    retrievexhr.addEventListener('load', () => {
+    // console.log(retrievexhr)
+    if (retrievexhr.status === 200) {
+    this.setState({
+      saved: retrievexhr.response.savedResults
+    })
+    console.log(this.state.saved)
+  }
+  });
+  retrievexhr.send();
+  }
+
 
   loadEbay() {
     const ebayxhr = new XMLHttpRequest();
@@ -203,8 +227,10 @@ class DashboardPage extends React.Component {
           />
           {!this.state.show ? (
             <div className="walmartWindowFull">
-            <h1 className="walmartHeader">Walmart Results</h1>
+
             {this.state.walmartResults.length ? (
+             <div>
+               <h1 className="walmartHeader">Walmart Results</h1>
                 <SearchList>
                   {this.state.walmartResults.map(walmartContainer => (
                     <SearchListItem key={walmartContainer.itemId}>
@@ -219,8 +245,23 @@ class DashboardPage extends React.Component {
                     </SearchListItem>
                   ))}
                   </SearchList>
+                  </div>
                 ) : (
+                  <div>
                   <h3 className = "text-center">Please Search Using the Box Above!</h3>
+                  <h4 className = "text-center">Your Most Recent Searches:</h4>
+                  {this.state.saved.length ? (
+                    <RecentList>
+                      {this.state.saved.map(savedContainer => (
+                      <RecentListItem>
+                        <p>{savedContainer}</p>
+                      </RecentListItem>
+                      ))}
+                    </RecentList>
+                  ): (
+                    console.log("no saved items")
+                  )}
+                  </div>
                 )}
             </div>
             ) : (
