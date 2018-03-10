@@ -197,6 +197,11 @@ body {
 /* END OF NAVBAR CSS */
 
 /* START OF MAIN CONTENT CSS */
+.boxOutline {
+    background-color: #fefefeec;
+    border-radius: 10px;
+    z-index: 2;
+}
 
 .mainContent {
     margin: 50px 70px 0px 70px;
