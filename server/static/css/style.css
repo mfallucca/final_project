@@ -52,12 +52,16 @@ body {
 }
 
 .container {
-  background-color: #fefefeec;
-  border-radius: 10px;
   margin: 0 auto;
   text-align: center;
   width: 700px;
 }
+
+/* div.container{
+  font-family: 'Slabo 27px', serif;
+  background-color: #fefefeec;
+  border-radius: 10px;
+} */
 
 .card-heading {
   padding: 16px;

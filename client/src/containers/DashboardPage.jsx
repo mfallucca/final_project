@@ -7,6 +7,8 @@ import SearchForm from "../components/Form";
 import { SearchList, SearchListItem  } from "../components/Search";
 import CompareBtn from "../components/CompareBtn";
 import Navbar from "../components/Navbar";
+const FontAwesome = require('react-fontawesome');
+
 class DashboardPage extends React.Component {
   /**
    * Class constructor.
@@ -206,7 +208,7 @@ class DashboardPage extends React.Component {
                 <SearchList>
                   {this.state.walmartResults.map(walmartContainer => (
                     <SearchListItem key={walmartContainer.itemId}>
-                      <a href={walmartContainer.productUrl}>
+                      <a target="_blank" href={walmartContainer.productUrl}>
                         <p>{walmartContainer.name}</p>
                       </a>
                       <p>${walmartContainer.salePrice}</p>
@@ -228,7 +230,7 @@ class DashboardPage extends React.Component {
                 <SearchList>
                   {this.state.walmartResults.map(walmartContainer => (
                     <SearchListItem key={walmartContainer.itemId}>
-                      <a href={walmartContainer.productUrl}>
+                      <a target="_blank" href={walmartContainer.productUrl}>
                         <p>{walmartContainer.name}</p>
                       </a>
                       <p>${walmartContainer.salePrice}</p>
@@ -250,7 +252,7 @@ class DashboardPage extends React.Component {
             <div className="amazonWindow">
               <h2 className="amazonHeader">Amazon.com's Best Match</h2>
               <div className="amazonResult">
-                <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
+                <p><a target="_blank" href = {this.state.url}>{this.state.resultTitle}</a></p>
                 <p>{this.state.amazonPrice}</p>
                 <img src= {this.state.medimage}></img>
               </div>
@@ -262,7 +264,7 @@ class DashboardPage extends React.Component {
               <div className="ebayWindow">
                 <h2 className="ebayHeader">eBay.com's Best Match:</h2>
                 <div className="ebayResult">
-                  <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
+                  <p><a target="_blank" href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
                   <p> Price: ${this.state.ebayPrice}</p>
                   <p> Shipping: ${this.state.ebayShipping}</p>
                   <img src={this.state.ebayImage}></img>

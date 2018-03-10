@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Auth from '../modules/Auth';
 
+
 class HomePage extends React.Component {
 
   componentDidMount() {
@@ -13,7 +14,7 @@ class HomePage extends React.Component {
     return (
       <div>
       <br />
-      <Card className="container">
+      <Card className="container" style={{borderRadius: '10px', backgroundColor: '#fefefeec'}}>
         <CardTitle title="Welcome to Pick It Up or Ship It Out!" />
           {Auth.isUserAuthenticated() ? (
             <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
