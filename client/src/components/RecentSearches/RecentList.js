@@ -3,7 +3,7 @@ import "./List.css";
 
 export const RecentList = ({ children }) => {
   return (
-    <div className="walmartResults">
+    <div className="recentList">
       <ul>
         {children}
       </ul>
