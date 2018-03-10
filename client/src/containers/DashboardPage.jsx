@@ -7,6 +7,7 @@ import SearchForm from "../components/Form";
 import { SearchList, SearchListItem  } from "../components/Search";
 import { RecentList, RecentListItem  } from "../components/RecentSearches";
 import CompareBtn from "../components/CompareBtn";
+import RecentBtn from "../components/RecentBtn";
 import Navbar from "../components/Navbar";
 const FontAwesome = require('react-fontawesome');
 
@@ -37,6 +38,8 @@ class DashboardPage extends React.Component {
     this.handleInputChangeQuery = this.handleInputChangeQuery.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleCompareClick = this.handleCompareClick.bind(this);
+    this.handleRecentClick = this.handleRecentClick.bind(this);
+    this.handleRecentSearch = this.handleRecentSearch.bind(this);
     this.loadAmazon = this.loadAmazon.bind(this);
     this.loadEbay = this.loadEbay.bind(this);
     this.loadBoth = this.loadBoth.bind(this);
@@ -53,6 +56,12 @@ class DashboardPage extends React.Component {
     console.log(this.state.upc)
   }
 
+  handleRecentClick(event) {
+    console.log(event.target.value)
+    this.setState({search: event.target.value}, 
+      this.handleRecentSearch
+    )
+  }
 
   handleFormSubmit(event) {
     event.preventDefault();
@@ -76,6 +85,27 @@ class DashboardPage extends React.Component {
   this.addSaved()
 
   };
+
+  handleRecentSearch() {
+    const walmartxhr = new XMLHttpRequest();
+    let search = this.state.search
+    walmartxhr.open('get', '/api/walmart/' + search);
+    walmartxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // set the authorization HTTP header
+    walmartxhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    walmartxhr.responseType = 'json';
+    walmartxhr.addEventListener('load', () => {
+    // console.log(walmartxhr)
+    if (walmartxhr.status === 200) {
+      this.setState({
+        walmartResults: walmartxhr.response.queryResults[0].items
+      });
+      console.log(this.state.walmartResults)
+    }
+  });
+  walmartxhr.send();
+
+  }
 
   /**
    * This method will be executed after initial rendering.
@@ -251,7 +281,11 @@ class DashboardPage extends React.Component {
                     <RecentList>
                       {this.state.saved.map(savedContainer => (
                       <RecentListItem>
-                        <p>{savedContainer}</p>
+                        <RecentBtn
+                        value={savedContainer}
+                        handleRecentClick={this.handleRecentClick}
+                        >
+                        </RecentBtn>
                       </RecentListItem>
                       ))}
                     </RecentList>
