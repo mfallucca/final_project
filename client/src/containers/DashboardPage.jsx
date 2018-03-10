@@ -271,7 +271,7 @@ class DashboardPage extends React.Component {
             ) : (
               <h3 className = "text-center">No Ebay Results to Display</h3>
             )}
-            {this.state.saved.length ? (
+            {/* {this.state.saved.length ? (
               <SearchList>
                 <h2>Previous Search Terms:</h2>
               {this.state.saved.map(savedContainer => (
@@ -284,7 +284,7 @@ class DashboardPage extends React.Component {
               </SearchList>
             ) : (
               <h3 className = "text-center">No previous searches to display</h3>
-            )}
+            )} */}
           </div>
             ) : (
               console.log("hiding")
