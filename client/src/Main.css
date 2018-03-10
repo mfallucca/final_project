@@ -28,7 +28,7 @@ body {
 /* NAVBAR CSS */
 .navBar {
     position: relative;
-    display: grid;
+    display: grid; 
     background-image: linear-gradient(139deg, #00C4CC 0%, #7D2AE8 100%);
     min-height: 78px;
     grid-template-columns: 1fr 3fr 1fr;
@@ -36,6 +36,26 @@ body {
     border-bottom: 2px solid #fefefe4e;
     z-index: 2;
 } 
+#navbarHeader {
+    display: inline-block;
+    grid-column: 2/3;
+    color: #fefefedb;
+    font-family: 'Slabo 27px', serif;
+    font-size: 18px;
+    justify-self: center;
+    align-self: end;
+
+}
+
+#navbarHeader h1{
+    color: #fefefedb;
+    font-family: 'Slabo 27px', serif;
+    font-size: 40px;
+    padding: 0 0 10px 0;
+    margin: 0;
+    font-weight: normal;
+}
+
     /* HOME BUTTON */
 
 #homeTitle a img {
@@ -160,12 +180,19 @@ body {
     padding-right: 26px;
     grid-column: 3/4;
     text-decoration: none;
+    transition: transform 0.8s;
 }
 #signupButton a {
     text-decoration: none;
 }
+#signupButton:hover{
+    transform: translate(5px, -5px);
+}
 #loginButton a{
     text-decoration: none;
+}
+#loginButton:hover{
+    transform: translate(5px, -5px);
 }
 .signupA {
     color: #ffffff;
@@ -174,6 +201,7 @@ body {
 }
 .signupA:hover {
     opacity: 1;
+    
 }
 
 #loginButton {
@@ -184,6 +212,7 @@ body {
     padding-right: 26px;
     grid-column: 4/5;
     text-decoration: none;
+    transition: transform 0.8s;
 }
 .loginA {
     color: #ffffff;
@@ -217,8 +246,8 @@ body {
     justify-self: center;
     align-self: center; 
     z-index: 3;
-
 }
+
 #formContainer {
     padding-bottom: 13px;
 
