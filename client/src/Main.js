@@ -103,8 +103,7 @@ class Main extends Component {
               <div id="homeTitle"><Link to='/'><a href="/"><img src={Logo} alt="pickitLogo"/></a></Link></div>
               <div id="homeTitleTwo"><Link to='/'><a href="/"><img src={Logo} alt="pickitLogo"/></a></Link></div> 
               <div id="navbarHeader"><h1>Pick It Up or Ship It Out!</h1></div>
-              <div id="signupButton"><Link to='/signup'><a className="signupA" href="/signup">Sign Up</a></Link></div>
-              <div id="loginButton"><Link to='/login'><a className="loginA" href="/login">Log In</a></Link></div>
+              <div id="signupButton"><Link to='/signup'><a className="signupA" href="/signup">Sign Up |</a></Link><Link to='/login'><a className="loginA" href="/login">|  Log In</a></Link></div>
             </div>
               )}
 

@@ -184,19 +184,13 @@ body {
     padding-right: 26px;
     grid-column: 3/4;
     text-decoration: none;
-    transition: transform 0.8s;
 }
 #signupButton a {
     text-decoration: none;
 }
-#signupButton:hover{
-    transform: translate(5px, -5px);
-}
+
 #loginButton a{
     text-decoration: none;
-}
-#loginButton:hover{
-    transform: translate(5px, -5px);
 }
 .signupA {
     color: #ffffff;
@@ -205,7 +199,6 @@ body {
 }
 .signupA:hover {
     opacity: 1;
-    
 }
 
 #loginButton {
