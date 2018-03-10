@@ -146,10 +146,7 @@ class DashboardPage extends React.Component {
     savedxhr.addEventListener('load', () => {
     // console.log(savedxhr)
     if (savedxhr.status === 200) {
-    this.setState({
-      saved: savedxhr.response.savedResults
-    })
-    console.log(this.state.saved)
+    console.log("new item saved")
   }
   });
   savedxhr.send();

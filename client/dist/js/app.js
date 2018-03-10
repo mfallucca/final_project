@@ -16938,8 +16938,6 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'addSaved',
     value: function addSaved() {
-      var _this5 = this;
-
       var savedxhr = new XMLHttpRequest();
       var email = this.state.user.email;
       console.log(email);
@@ -16953,10 +16951,7 @@ var DashboardPage = function (_React$Component) {
       savedxhr.addEventListener('load', function () {
         // console.log(savedxhr)
         if (savedxhr.status === 200) {
-          _this5.setState({
-            saved: savedxhr.response.savedResults
-          });
-          console.log(_this5.state.saved);
+          console.log("new item saved");
         }
       });
       savedxhr.send();
@@ -16964,7 +16959,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'retrieveSaved',
     value: function retrieveSaved() {
-      var _this6 = this;
+      var _this5 = this;
 
       var retrievexhr = new XMLHttpRequest();
       var email = this.state.user.email;
@@ -16977,10 +16972,10 @@ var DashboardPage = function (_React$Component) {
       retrievexhr.addEventListener('load', function () {
         // console.log(retrievexhr)
         if (retrievexhr.status === 200) {
-          _this6.setState({
+          _this5.setState({
             saved: retrievexhr.response.savedResults
           });
-          console.log(_this6.state.saved);
+          console.log(_this5.state.saved);
         }
       });
       retrievexhr.send();
@@ -16988,7 +16983,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'loadEbay',
     value: function loadEbay() {
-      var _this7 = this;
+      var _this6 = this;
 
       var ebayxhr = new XMLHttpRequest();
       var upc = this.state.upc;
@@ -17000,7 +16995,7 @@ var DashboardPage = function (_React$Component) {
       ebayxhr.addEventListener('load', function () {
         // console.log(ebayxhr)
         if (ebayxhr.status === 200 && ebayxhr.response.ebayURL) {
-          _this7.setState({
+          _this6.setState({
             ebayTitle: ebayxhr.response.ebayTitle,
             ebayImage: ebayxhr.response.ebayImage,
             ebayPrice: ebayxhr.response.ebayPrice,
@@ -17008,7 +17003,7 @@ var DashboardPage = function (_React$Component) {
             ebayURL: ebayxhr.response.ebayURL
           });
         } else {
-          _this7.setState({
+          _this6.setState({
             ebayTitle: '',
             ebayImage: '',
             ebayPrice: '',
@@ -17035,7 +17030,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this8 = this;
+      var _this7 = this;
 
       return _react2.default.createElement(
         'div',
@@ -17079,7 +17074,7 @@ var DashboardPage = function (_React$Component) {
                   ),
                   _react2.default.createElement(_CompareBtn2.default, {
                     upc: walmartContainer.upc,
-                    handleCompareClick: _this8.handleCompareClick
+                    handleCompareClick: _this7.handleCompareClick
                   })
                 );
               })
@@ -17145,7 +17140,7 @@ var DashboardPage = function (_React$Component) {
                 ),
                 _react2.default.createElement(_CompareBtn2.default, {
                   upc: walmartContainer.upc,
-                  handleCompareClick: _this8.handleCompareClick
+                  handleCompareClick: _this7.handleCompareClick
                 })
               );
             })
