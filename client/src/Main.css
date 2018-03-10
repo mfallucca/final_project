@@ -4,7 +4,12 @@ body {
     background-color: #fefefe;
     font-family: 'Slabo 27px', serif;
 }
-.pageWrapper {
+
+.addZindex {
+    z-index: 4;
+}
+
+.background {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -13,6 +18,12 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    /* z-index: 1; */
+}
+
+.pageWrapper {
+    width: 100%;
+    height: 100%;
 }
 /* NAVBAR CSS */
 .navBar {
@@ -23,8 +34,8 @@ body {
     grid-template-columns: 1fr 3fr 1fr;
     padding-bottom: 5px;
     border-bottom: 2px solid #fefefe4e;
-
-}
+    z-index: 2;
+} 
     /* HOME BUTTON */
 
 #homeTitle a img {
@@ -61,26 +72,22 @@ body {
 }
 
     /* SEARCH INPUT AND BUTTON */
-#formContainer {
-    justify-self: center;
-    align-self: end;
-    padding-bottom: 13px;
-    grid-column: 2/3;
-}
+
+
 #navSearchInput {
     font-size: 18px;
     font-family: 'Slabo 27px', serif;
     border-radius: 15px;
     padding: 0 12px;
     background-color: #fefefe;
-    opacity: 0.2;
+    opacity: 0.7;
     width: 330px;
     height: 46px;
 }
 
 #navSearchInput:hover{
     background-color: #fefefe;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 #navSearchInput:focus {
     outline: 0;
@@ -149,31 +156,42 @@ body {
     font-size: 22px;
     justify-self: right;
     align-self: end;
-    margin: 0 20px 28px 0;
+    margin: 0 20px 18px 0;
     padding-right: 26px;
     grid-column: 3/4;
-
+    text-decoration: none;
 }
-
 #signupButton a {
+    text-decoration: none;
+}
+#loginButton a{
+    text-decoration: none;
+}
+.signupA {
     color: #ffffff;
     opacity: .7;
     text-decoration: none;
+}
+.signupA:hover {
+    opacity: 1;
 }
 
 #loginButton {
     font-size: 22px;
     justify-self: right;
     align-self: end;
-    margin: 0 20px 28px 0;
+    margin: 0 20px 18px 0;
     padding-right: 26px;
     grid-column: 4/5;
+    text-decoration: none;
 }
-
-loginButton a {
+.loginA {
     color: #ffffff;
     opacity: .7;
     text-decoration: none;
+}
+.loginA:hover{
+    opacity: 1;
 }
 
 /* END OF NAVBAR CSS */
@@ -187,6 +205,19 @@ loginButton a {
     grid-column-gap: 26px;
     grid-row-gap: 20px;
 }
+
+.searchSection {
+    margin-top: -162px;
+    grid-column: 1/9;
+    justify-self: center;
+    align-self: center; 
+    z-index: 3;
+
+}
+#formContainer {
+    padding-bottom: 13px;
+
+}
     /* WALMART SECTION */
 .walmartWindowFull {
     grid-column: 2/8;
@@ -196,18 +227,20 @@ loginButton a {
     overflow: scroll;
     background-color: #fefefeec;
     border-radius: 10px;
+    z-index: 2;
 }
 .walmartHeader {
     font-size: 32px;
 }
 .walmartWindowHalf {
     grid-column: 1/5;
-    max-height: 600px;
+    max-height: 700px;
     text-align: center;
     padding: 20px 30px 20px 30px;
     overflow: scroll;
     background-color: #fefefeec;
     border-radius: 10px;
+    z-index: 2;
 }
 .walmartResults {
     margin-top: 32px;
@@ -247,13 +280,14 @@ loginButton a {
 
 .ebayAmazonSection{
     grid-column: 5/9;
+    z-index: 2;
 }
 
     /* AMAZON SECTION START */
 .amazonWindow {
-    max-height: 300px;
+    max-height: 360px;
     text-align: center;
-    padding: 20px 30px 20px 30px;
+    padding: 14px 30px 14px 30px;
     overflow: scroll;
     background-color: #fefefeec;
     border-radius: 10px;
@@ -268,7 +302,7 @@ loginButton a {
     color: #000000a1;
 }
 .amazonResult p {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 .amazonResult a:hover{
     color: #000000dd;
@@ -280,9 +314,9 @@ loginButton a {
 
     /* EBAY SECTION START */
 .ebayWindow {
-    max-height: 300px;
+    max-height: 360px;
     text-align: center;
-    padding: 20px 30px 20px 30px;
+    padding: 14px 30px 14px 30px;
     overflow: scroll;
     background-color: #fefefeec;
     border-radius: 10px;
@@ -296,7 +330,7 @@ loginButton a {
     color: #000000a1;
 }
 .ebayResult p {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 }
 .ebayResult a:hover{
     color: #000000dd;

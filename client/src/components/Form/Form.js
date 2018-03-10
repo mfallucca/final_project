@@ -2,16 +2,18 @@ import React from "react";
 
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
 const SearchForm = props => (
-  <div id="formContainer">
-    <form action="">
-        <input 
-          placeholder="Search for Item!" 
-          id="navSearchInput" 
-          type="search"
-          value={props.search}
-          onChange={props.handleInputChangeQuery}/>
-        <button id="navSearchButton" type="submit" onClick={props.handleFormSubmit}>Search</button>
-    </form>
+  <div className="searchSection"> 
+    <div id="formContainer">
+      <form action="">
+          <input 
+            placeholder="Search for Item!" 
+            id="navSearchInput" 
+            type="search"
+            value={props.search}
+            onChange={props.handleInputChangeQuery}/>
+          <button id="navSearchButton" type="submit" onClick={props.handleFormSubmit}>Search</button>
+      </form>
+    </div>
   </div>
 );
 

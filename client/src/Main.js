@@ -86,12 +86,13 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <HashRouter>
           <div className="pageWrapper">
+            <div className="background"/>
 
           {this.state.authenticated ? (
             <div className="navBar">
               <div id="homeTitle"><a href="#/dashboard"><img src={Logo} alt="pickitLogo"/></a></div>
               <div id="homeTitleTwo"><a href="#/dashboard"><img src={Logo} alt="pickitLogo"/></a></div> 
-              <Form/>
+              {/* <Form/> */}
               <div id="logoutButtonOne"><Link to='/logout'><a id="logoutOne" href="/logout">Log out</a></Link></div>
               <div id="logoutButtonTwo"><Link to='/logout'><a id="logoutTwo" href="/logout">Log out</a></Link></div>
             </div>
@@ -101,9 +102,9 @@ class Main extends Component {
             <div className="navBar">
               <div id="homeTitle"><Link to='/'><a href="/"><img src={Logo} alt="pickitLogo"/></a></Link></div>
               <div id="homeTitleTwo"><Link to='/'><a href="/"><img src={Logo} alt="pickitLogo"/></a></Link></div> 
-              <Form/>
-              <div id="signupButton"><Link to='/signup'><a href="/signup">Sign Up</a></Link></div>
-              <div id="loginButton"><Link to='/login'><a href="/login">Log In</a></Link></div>
+              {/* <Form/> */}
+              <div id="signupButton"><Link to='/signup'><a className="signupA" href="/signup">Sign Up</a></Link></div>
+              <div id="loginButton"><Link to='/login'><a className="loginA" href="/login">Log In</a></Link></div>
             </div>
               )}
 

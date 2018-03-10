@@ -1,67 +1,84 @@
 body {
   margin: 0;
   font-size: 16px;
+  z-index: 2;
 }
 
-a {
-  color: #00bcd4;
-  font-weight: bold;
+/* a {
+  color: #ffffff;
+  opacity: .8;
   text-decoration: none;
-  transition: color 0.4s;
+  padding-top: 14px;
+} */
+
+.addZindex {
+  z-index: 4;
 }
 
-a:hover {
-  color: #1976d2;
-}
+/* a:hover {
+  opacity: .9;
+} */
 
 .text-center {
   text-align: center;
+  z-index: 2;
 }
 
 .top-bar {
   padding: 10px 15px;
   margin-bottom: 50px;
+  z-index: 2;
 }
 .top-bar::after {
   content: '';
   display: block;
   clear: both;
+  z-index: 2;
 }
 
 .top-bar-left {
   float: left;
   font-size: 1.5em;
+  z-index: 2;
 }
 
 .top-bar-right {
   float: right;
+  z-index: 2;
 }
 
 .top-bar a,
 .nav a {
   margin: 0 8px;
+  z-index: 2;
 }
 
 .container {
   margin: 0 auto;
   text-align: center;
   width: 700px;
+  z-index: 2;
 }
 
 .card-heading {
   padding: 16px;
+  z-index: 2;
+  
 }
 
 .field-line, .button-line {
   padding: 16px;
+  z-index: 2;
 }
 
 .error-message {
   padding: 0 16px;
   color: tomato;
+  z-index: 2;
 }
 
 .success-message {
   padding: 0 16px;
   color: green;
+  z-index: 2;
 }
