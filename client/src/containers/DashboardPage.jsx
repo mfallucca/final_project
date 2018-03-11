@@ -52,7 +52,8 @@ class DashboardPage extends React.Component {
   };
 
   handleCompareClick(event) {
-    this.setState({ upc: event.target.value, show: true }, this.loadBoth)
+    this.setState({ upc: event.currentTarget.value }, () => { this.loadBoth()})
+    this.setState({show: true})
     console.log(this.state.upc)
   }
 
@@ -63,6 +64,8 @@ class DashboardPage extends React.Component {
     )
   }
 
+
+  
   handleFormSubmit(event) {
     event.preventDefault();
     const walmartxhr = new XMLHttpRequest();
@@ -134,7 +137,7 @@ class DashboardPage extends React.Component {
   loadAmazon() {
     const amazonxhr = new XMLHttpRequest();
     let upc = this.state.upc
-    amazonxhr.open('get', '/api/amazon/' + upc);
+    amazonxhr.open('get', '/api/amazon/' + this.state.upc);
     amazonxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     // set the authorization HTTP header
     amazonxhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
@@ -207,7 +210,7 @@ class DashboardPage extends React.Component {
   loadEbay() {
     const ebayxhr = new XMLHttpRequest();
     let upc = this.state.upc
-    ebayxhr.open('get', '/api/ebay/' + upc);
+    ebayxhr.open('get', '/api/ebay/' + this.state.upc);
     ebayxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     // set the authorization HTTP header
     ebayxhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);

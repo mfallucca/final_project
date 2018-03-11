@@ -9413,7 +9413,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Navbar = __webpack_require__(208);
+var _Navbar = __webpack_require__(210);
 
 Object.defineProperty(exports, "default", {
   enumerable: true,
@@ -15542,7 +15542,7 @@ var _Navbar = __webpack_require__(120);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _Navbar3 = __webpack_require__(210);
+var _Navbar3 = __webpack_require__(209);
 
 var _Navbar4 = _interopRequireDefault(_Navbar3);
 
@@ -16468,20 +16468,20 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonOne" },
+            { id: "signupButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutOne", href: "/logout" },
-                "Log out"
+                { href: "/signup" },
+                "Sign Up"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonTwo" },
+            { id: "loginButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutTwo", href: "/logout" },
-                "Log out"
+                { href: "/login" },
+                "Log In"
             )
         )
     );
@@ -16491,6 +16491,28 @@ exports.default = Navbar;
 
 /***/ }),
 /* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Navbar = __webpack_require__(208);
+
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Navbar).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16539,48 +16561,26 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "signupButton" },
+            { id: "logoutButtonOne" },
             _react2.default.createElement(
                 "a",
-                { href: "/signup" },
-                "Sign Up"
+                { id: "logoutOne", href: "/logout" },
+                "Log out"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "loginButton" },
+            { id: "logoutButtonTwo" },
             _react2.default.createElement(
                 "a",
-                { href: "/login" },
-                "Log In"
+                { id: "logoutTwo", href: "/logout" },
+                "Log out"
             )
         )
     );
 };
 
 exports.default = Navbar;
-
-/***/ }),
-/* 210 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Navbar = __webpack_require__(209);
-
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Navbar).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 211 */
@@ -17058,7 +17058,12 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'handleCompareClick',
     value: function handleCompareClick(event) {
-      this.setState({ upc: event.target.value, show: true }, this.loadBoth);
+      var _this2 = this;
+
+      this.setState({ upc: event.currentTarget.value }, function () {
+        _this2.loadBoth();
+      });
+      this.setState({ show: true });
       console.log(this.state.upc);
     }
   }, {
@@ -17070,33 +17075,9 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'handleFormSubmit',
     value: function handleFormSubmit(event) {
-      var _this2 = this;
-
-      event.preventDefault();
-      var walmartxhr = new XMLHttpRequest();
-      var search = this.state.search;
-      walmartxhr.open('get', '/api/walmart/' + search);
-      walmartxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      // set the authorization HTTP header
-      walmartxhr.setRequestHeader('Authorization', 'bearer ' + _Auth2.default.getToken());
-      walmartxhr.responseType = 'json';
-      walmartxhr.addEventListener('load', function () {
-        // console.log(walmartxhr)
-        if (walmartxhr.status === 200) {
-          _this2.setState({
-            walmartResults: walmartxhr.response.queryResults[0].items
-          });
-          console.log(_this2.state.walmartResults);
-        }
-      });
-      walmartxhr.send();
-      this.addSaved();
-    }
-  }, {
-    key: 'handleRecentSearch',
-    value: function handleRecentSearch() {
       var _this3 = this;
 
+      event.preventDefault();
       var walmartxhr = new XMLHttpRequest();
       var search = this.state.search;
       walmartxhr.open('get', '/api/walmart/' + search);
@@ -17114,6 +17095,30 @@ var DashboardPage = function (_React$Component) {
         }
       });
       walmartxhr.send();
+      this.addSaved();
+    }
+  }, {
+    key: 'handleRecentSearch',
+    value: function handleRecentSearch() {
+      var _this4 = this;
+
+      var walmartxhr = new XMLHttpRequest();
+      var search = this.state.search;
+      walmartxhr.open('get', '/api/walmart/' + search);
+      walmartxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      // set the authorization HTTP header
+      walmartxhr.setRequestHeader('Authorization', 'bearer ' + _Auth2.default.getToken());
+      walmartxhr.responseType = 'json';
+      walmartxhr.addEventListener('load', function () {
+        // console.log(walmartxhr)
+        if (walmartxhr.status === 200) {
+          _this4.setState({
+            walmartResults: walmartxhr.response.queryResults[0].items
+          });
+          console.log(_this4.state.walmartResults);
+        }
+      });
+      walmartxhr.send();
     }
 
     /**
@@ -17123,7 +17128,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var _this4 = this;
+      var _this5 = this;
 
       var xhr = new XMLHttpRequest();
       xhr.open('get', '/api/dashboard');
@@ -17134,10 +17139,10 @@ var DashboardPage = function (_React$Component) {
 
       xhr.addEventListener('load', function () {
         if (xhr.status === 200) {
-          _this4.setState({
+          _this5.setState({
             user: xhr.response.user
           });
-          _this4.retrieveSaved();
+          _this5.retrieveSaved();
         }
       });
       xhr.send();
@@ -17148,11 +17153,11 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'loadAmazon',
     value: function loadAmazon() {
-      var _this5 = this;
+      var _this6 = this;
 
       var amazonxhr = new XMLHttpRequest();
       var upc = this.state.upc;
-      amazonxhr.open('get', '/api/amazon/' + upc);
+      amazonxhr.open('get', '/api/amazon/' + this.state.upc);
       amazonxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       // set the authorization HTTP header
       amazonxhr.setRequestHeader('Authorization', 'bearer ' + _Auth2.default.getToken());
@@ -17160,14 +17165,14 @@ var DashboardPage = function (_React$Component) {
       amazonxhr.addEventListener('load', function () {
         // console.log(amazonxhr)
         if (amazonxhr.status === 200 && amazonxhr.response.url) {
-          _this5.setState({
+          _this6.setState({
             url: amazonxhr.response.url,
             medimage: amazonxhr.response.medimage,
             resultTitle: amazonxhr.response.title,
             amazonPrice: amazonxhr.response.newprice
           });
         } else {
-          _this5.setState({
+          _this6.setState({
             url: '',
             medimage: '',
             resultTitle: '',
@@ -17204,7 +17209,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'retrieveSaved',
     value: function retrieveSaved() {
-      var _this6 = this;
+      var _this7 = this;
 
       var retrievexhr = new XMLHttpRequest();
       var email = this.state.user.email;
@@ -17217,10 +17222,10 @@ var DashboardPage = function (_React$Component) {
       retrievexhr.addEventListener('load', function () {
         // console.log(retrievexhr)
         if (retrievexhr.status === 200) {
-          _this6.setState({
+          _this7.setState({
             saved: retrievexhr.response.savedResults
           });
-          console.log(_this6.state.saved);
+          console.log(_this7.state.saved);
         }
       });
       retrievexhr.send();
@@ -17228,11 +17233,11 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'loadEbay',
     value: function loadEbay() {
-      var _this7 = this;
+      var _this8 = this;
 
       var ebayxhr = new XMLHttpRequest();
       var upc = this.state.upc;
-      ebayxhr.open('get', '/api/ebay/' + upc);
+      ebayxhr.open('get', '/api/ebay/' + this.state.upc);
       ebayxhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       // set the authorization HTTP header
       ebayxhr.setRequestHeader('Authorization', 'bearer ' + _Auth2.default.getToken());
@@ -17240,7 +17245,7 @@ var DashboardPage = function (_React$Component) {
       ebayxhr.addEventListener('load', function () {
         // console.log(ebayxhr)
         if (ebayxhr.status === 200 && ebayxhr.response.ebayURL) {
-          _this7.setState({
+          _this8.setState({
             ebayTitle: ebayxhr.response.ebayTitle,
             ebayImage: ebayxhr.response.ebayImage,
             ebayPrice: ebayxhr.response.ebayPrice,
@@ -17248,7 +17253,7 @@ var DashboardPage = function (_React$Component) {
             ebayURL: ebayxhr.response.ebayURL
           });
         } else {
-          _this7.setState({
+          _this8.setState({
             ebayTitle: '',
             ebayImage: '',
             ebayPrice: '',
@@ -17275,7 +17280,7 @@ var DashboardPage = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this8 = this;
+      var _this9 = this;
 
       return _react2.default.createElement(
         'div',
@@ -17319,7 +17324,7 @@ var DashboardPage = function (_React$Component) {
                   ),
                   _react2.default.createElement(_CompareBtn2.default, {
                     upc: walmartContainer.upc,
-                    handleCompareClick: _this8.handleCompareClick
+                    handleCompareClick: _this9.handleCompareClick
                   })
                 );
               })
@@ -17346,7 +17351,7 @@ var DashboardPage = function (_React$Component) {
                   null,
                   _react2.default.createElement(_RecentBtn2.default, {
                     value: savedContainer,
-                    handleRecentClick: _this8.handleRecentClick
+                    handleRecentClick: _this9.handleRecentClick
                   })
                 );
               })
@@ -17384,7 +17389,7 @@ var DashboardPage = function (_React$Component) {
                 ),
                 _react2.default.createElement(_CompareBtn2.default, {
                   upc: walmartContainer.upc,
-                  handleCompareClick: _this8.handleCompareClick
+                  handleCompareClick: _this9.handleCompareClick
                 })
               );
             })
