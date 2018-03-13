@@ -9413,7 +9413,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Navbar = __webpack_require__(210);
+var _Navbar = __webpack_require__(208);
 
 Object.defineProperty(exports, "default", {
   enumerable: true,
@@ -15542,7 +15542,7 @@ var _Navbar = __webpack_require__(120);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _Navbar3 = __webpack_require__(209);
+var _Navbar3 = __webpack_require__(210);
 
 var _Navbar4 = _interopRequireDefault(_Navbar3);
 
@@ -16468,20 +16468,20 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "signupButton" },
+            { id: "logoutButtonOne" },
             _react2.default.createElement(
                 "a",
-                { href: "/signup" },
-                "Sign Up"
+                { id: "logoutOne", href: "/logout" },
+                "Log out"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "loginButton" },
+            { id: "logoutButtonTwo" },
             _react2.default.createElement(
                 "a",
-                { href: "/login" },
-                "Log In"
+                { id: "logoutTwo", href: "/logout" },
+                "Log out"
             )
         )
     );
@@ -16491,28 +16491,6 @@ exports.default = Navbar;
 
 /***/ }),
 /* 209 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Navbar = __webpack_require__(208);
-
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Navbar).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16561,26 +16539,48 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonOne" },
+            { id: "signupButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutOne", href: "/logout" },
-                "Log out"
+                { href: "/signup" },
+                "Sign Up"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonTwo" },
+            { id: "loginButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutTwo", href: "/logout" },
-                "Log out"
+                { href: "/login" },
+                "Log In"
             )
         )
     );
 };
 
 exports.default = Navbar;
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Navbar = __webpack_require__(209);
+
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Navbar).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 211 */
@@ -20598,7 +20598,7 @@ exports = module.exports = __webpack_require__(55)(false);
 
 
 // module
-exports.push([module.i, "* {\n    padding: 0;\n  }\n\nbody {\n    font-size: 20px;\n    color: #000000c8;\n    background-color: #fefefe;\n    font-family: 'Slabo 27px', serif;\n}\n\n.addZindex {\n    z-index: 4;\n}\n\n.background {\n    position: fixed;\n    width: 100%;\n    height: 100%;\n    background-image: url(" + escape(__webpack_require__(496)) + ");\n    -webkit-background-size: cover;\n    -moz-background-size: cover;\n    -o-background-size: cover;\n    background-size: cover;\n    z-index: -1;\n}\n\n.pageWrapper {\n    width: 100%;\n    height: 100%;\n}\n/* NAVBAR CSS */\n.navBar {\n    position: relative;\n    display: grid; \n    background-image: linear-gradient(139deg, #00C4CC 0%, #7D2AE8 100%);\n    min-height: 78px;\n    grid-template-columns: 1fr 3fr 1fr;\n    padding-bottom: 5px;\n    border-bottom: 2px solid #fefefe4e;\n    z-index: 2;\n} \n#navbarHeader {\n    display: inline-block;\n    grid-column: 2/3;\n    color: #fefefedb;\n    font-family: 'Slabo 27px', serif;\n    font-size: 18px;\n    justify-self: center;\n    align-self: end;\n\n}\n\n#navbarHeader h1{\n    color: #fefefedb;\n    font-family: 'Slabo 27px', serif;\n    font-size: 40px;\n    padding: 0 0 10px 0;\n    margin: 0;\n    font-weight: normal;\n}\n\n    /* HOME BUTTON */\n\n#homeTitle a img {\n    /* content:url(\"images/pickItLogo.png\"); */\n    height: 74px;\n    width: 74px;\n    opacity: .9;\n}\n#homeTitleTwo a img {\n    /* content:url(\"images/pickItLogo.png\"); */\n    height: 74px;\n    width: 74px;\n    opacity: .3;\n}\n#homeTitle {\n    align-self: end;\n    justify-self: left;\n    padding-left: 12px;\n    position: absolute;\n    grid-column: 1/2;\n    transition: transform 0.8s;\n    z-index: 2;\n}\n#homeTitle:hover {\n    transform: translate(5px, -5px);\n}\n#homeTitleTwo {\n    align-self: end;\n    justify-self: left;\n    padding-left: 12px;\n    position: absolute;\n    grid-column: 1/2;\n    transition: transform 0.8s;\n}\n\n    /* SEARCH INPUT AND BUTTON */\n\n\n#navSearchInput {\n    font-size: 18px;\n    font-family: 'Slabo 27px', serif;\n    border-radius: 15px;\n    padding: 0 12px;\n    background-color: #fefefe;\n    opacity: 0.7;\n    width: 330px;\n    height: 46px;\n}\n\n#navSearchInput:hover{\n    background-color: #fefefe;\n    opacity: 0.8;\n}\n#navSearchInput:focus {\n    outline: 0;\n    background-color: #fefefe;\n    opacity: 0.9;\n}\n#navSearchButton {\n    font-size: 16px;\n    border-radius: 15px;\n    background-color: #fefefe;\n    opacity: 0.9;\n    width: 124px;\n    height: 44px;\n    color: #000000;\n    font-family: 'Slabo 27px', serif;\n    margin-left: 12px;\n}\n#navSearchButton:focus{\n    outline: 0;\n}\n#navSearchButton:active{\n    background-color: #fefefe;\n}\n    /* LOGOUT BUTTON */\n#logoutButtonOne {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 28px 0;\n    padding-right: 26px;\n    position: absolute;\n    grid-column: 3/4;\n    z-index: 2;\n    transition: transform 0.8s;\n}\n\n#logoutButtonOne:hover {\n    opacity: none;\n    transform: translate(5px, -5px);  \n}\n#logoutButtonTwo {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 28px 0;\n    padding-right: 26px;\n    position: absolute;\n    grid-column: 3/4;\n    transition: transform 0.8s;\n}\n\n#logoutButtonOne a {\n    color: #ffffff;\n    opacity: .7;\n    text-decoration: none;\n}\n\n\n#logoutButtonTwo a {\n    color: #fefefe;\n    opacity: .2;\n    text-decoration: none;\n}\n\n#signupButton {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 18px 0;\n    padding-right: 26px;\n    grid-column: 3/4;\n    text-decoration: none;\n}\n#signupButton a {\n    text-decoration: none;\n}\n\n#loginButton a{\n    text-decoration: none;\n}\n.signupA {\n    color: #ffffff;\n    opacity: .7;\n    text-decoration: none;\n}\n.signupA:hover {\n    opacity: 1;\n}\n\n#loginButton {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 18px 0;\n    padding-right: 26px;\n    grid-column: 4/5;\n    text-decoration: none;\n    transition: transform 0.8s;\n}\n.loginA {\n    color: #ffffff;\n    opacity: .7;\n    text-decoration: none;\n}\n.loginA:hover{\n    opacity: 1;\n}\n\n/* END OF NAVBAR CSS */\n\n/* START OF MAIN CONTENT CSS */\n.boxOutline {\n    background-color: #fefefeec;\n    border-radius: 10px;\n    z-index: 2;\n}\n\n.mainContent {\n    margin: 50px 70px 0px 70px;\n    display: grid;\n    grid-template-columns: repeat(8, 1fr);\n    grid-column-gap: 26px;\n    grid-row-gap: 20px;\n}\n\n.searchSection {\n    margin-top: -162px;\n    grid-column: 1/9;\n    justify-self: center;\n    align-self: center; \n    z-index: 3;\n}\n\n#formContainer {\n    padding-bottom: 13px;\n\n}\n    /* WALMART SECTION */\n.walmartWindowFull {\n    grid-column: 2/8;\n    max-height: 660px;\n    text-align: center;\n    padding: 20px 30px 10px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n    z-index: 2;\n}\n.walmartHeader {\n    font-size: 32px;\n}\n.walmartWindowHalf {\n    grid-column: 1/5;\n    max-height: 700px;\n    text-align: center;\n    padding: 20px 30px 20px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n    z-index: 2;\n}\n.walmartResults {\n    margin-top: 32px;\n    text-align: left;\n    font-family: 'Source Sans Pro', sans-serif;\n}\n.walmartList {\n    display: grid;\n    grid-template-columns: 4fr 1fr 1fr;\n    padding-bottom: 12px;\n}\n.walmartList p {\n    align-self: center;\n}\n.walmartList a {\n    text-decoration: none;\n    color: #000000a1;\n}\n.walmartList a:hover{\n    color: #000000dd;\n}\n.walmartPrice {\n    justify-self: right;\n}\n.compareButton {\n    height: 30px;\n    width: 50px;\n    background-color: #fefefe;\n    justify-self: right;\n    align-self: center;\n}\n.compareButton:hover{\n    -webkit-box-shadow: 0px 1px 3px #6666668a;\n    -moz-box-shadow: 0px 1px 3px #6666668a;\n    box-shadow: -1px 1px 3px #6666668a;\n}\n.compareButton:focus{\n    outline: 0;\n}\n    /* WALMART SECTION END */\n\n.ebayAmazonSection{\n    grid-column: 5/9;\n    z-index: 2;\n}\n\n    /* AMAZON SECTION START */\n.amazonWindow {\n    max-height: 360px;\n    text-align: center;\n    padding: 14px 30px 14px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n    margin-bottom: 24px;\n}\n.amazonHeader {\n    font-size: 32px;\n    margin-bottom: 20px;\n}\n.amazonResult a {\n    text-decoration: none;\n    color: #000000a1;\n}\n.amazonResult p {\n    margin-bottom: 12px;\n}\n.amazonResult a:hover{\n    color: #000000dd;\n}\n.amazonResult img {\n    margin-top: 15px;\n}\n    /* AMAZON SECTION END */\n\n    /* EBAY SECTION START */\n.ebayWindow {\n    max-height: 360px;\n    text-align: center;\n    padding: 14px 30px 14px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n}\n.ebayHeader {\n    font-size: 32px;\n    margin-bottom: 20px;\n}\n.ebayResult a {\n    text-decoration: none;\n    color: #000000a1;\n}\n.ebayResult p {\n    margin-bottom: 10px;\n}\n.ebayResult a:hover{\n    color: #000000dd;\n}\n.ebayResult img {\n    margin-top: 15px;\n}\n\n\n    /* EBAY SECTION END */\n\n/* END OF MAIN CONTENT CSS */\n\n.recentList {\n    list-style-type: none;\n    -webkit-padding-start: 0;\n}", ""]);
+exports.push([module.i, "* {\n    padding: 0;\n  }\n\nbody {\n    font-size: 20px;\n    color: #000000c8;\n    background-color: #fefefe;\n    font-family: 'Slabo 27px', serif;\n}\n\n.addZindex {\n    z-index: 4;\n}\n\n.background {\n    position: fixed;\n    width: 100%;\n    height: 100%;\n    background-image: url(" + escape(__webpack_require__(496)) + ");\n    -webkit-background-size: cover;\n    -moz-background-size: cover;\n    -o-background-size: cover;\n    background-size: cover;\n    z-index: -1;\n}\n\n.pageWrapper {\n    width: 100%;\n    height: 100%;\n}\n/* NAVBAR CSS */\n.navBar {\n    position: relative;\n    display: grid; \n    background-image: linear-gradient(139deg, #00C4CC 0%, #7D2AE8 100%);\n    min-height: 78px;\n    grid-template-columns: 1fr 3fr 1fr;\n    padding-bottom: 5px;\n    border-bottom: 2px solid #fefefe4e;\n    z-index: 2;\n} \n#navbarHeader {\n    display: inline-block;\n    grid-column: 2/3;\n    color: #fefefedb;\n    font-family: 'Slabo 27px', serif;\n    font-size: 18px;\n    justify-self: center;\n    align-self: end;\n\n}\n\n#navbarHeader h1{\n    color: #fefefedb;\n    font-family: 'Slabo 27px', serif;\n    font-size: 40px;\n    padding: 0 0 10px 0;\n    margin: 0;\n    font-weight: normal;\n}\n\n    /* HOME BUTTON */\n\n#homeTitle a img {\n    /* content:url(\"images/pickItLogo.png\"); */\n    height: 74px;\n    width: 74px;\n    opacity: .9;\n}\n#homeTitleTwo a img {\n    /* content:url(\"images/pickItLogo.png\"); */\n    height: 74px;\n    width: 74px;\n    opacity: .3;\n}\n#homeTitle {\n    align-self: end;\n    justify-self: left;\n    padding-left: 12px;\n    position: absolute;\n    grid-column: 1/2;\n    transition: transform 0.8s;\n    z-index: 2;\n}\n#homeTitle:hover {\n    transform: translate(5px, -5px);\n}\n#homeTitleTwo {\n    align-self: end;\n    justify-self: left;\n    padding-left: 12px;\n    position: absolute;\n    grid-column: 1/2;\n    transition: transform 0.8s;\n}\n\n    /* SEARCH INPUT AND BUTTON */\n\n\n#navSearchInput {\n    font-size: 18px;\n    font-family: 'Slabo 27px', serif;\n    border-radius: 15px;\n    padding: 0 12px;\n    background-color: #fefefe;\n    opacity: 0.7;\n    width: 330px;\n    height: 46px;\n}\n\n#navSearchInput:hover{\n    background-color: #fefefe;\n    opacity: 0.8;\n}\n#navSearchInput:focus {\n    outline: 0;\n    background-color: #fefefe;\n    opacity: 0.9;\n}\n#navSearchButton {\n    font-size: 16px;\n    border-radius: 15px;\n    background-color: #fefefe;\n    opacity: 0.9;\n    width: 124px;\n    height: 44px;\n    color: #000000;\n    font-family: 'Slabo 27px', serif;\n    margin-left: 12px;\n}\n#navSearchButton:focus{\n    outline: 0;\n}\n#navSearchButton:active{\n    background-color: #fefefe;\n}\n    /* LOGOUT BUTTON */\n#logoutButtonOne {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 28px 0;\n    padding-right: 26px;\n    position: absolute;\n    grid-column: 3/4;\n    z-index: 2;\n    transition: transform 0.8s;\n}\n\n#logoutButtonOne:hover {\n    opacity: none;\n    transform: translate(5px, -5px);  \n}\n#logoutButtonTwo {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 28px 0;\n    padding-right: 26px;\n    position: absolute;\n    grid-column: 3/4;\n    transition: transform 0.8s;\n}\n\n#logoutButtonOne a {\n    color: #ffffff;\n    opacity: .7;\n    text-decoration: none;\n}\n\n\n#logoutButtonTwo a {\n    color: #fefefe;\n    opacity: .2;\n    text-decoration: none;\n}\n\n#signupButton {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 18px 0;\n    padding-right: 26px;\n    grid-column: 3/4;\n    text-decoration: none;\n}\n#signupButton a {\n    text-decoration: none;\n}\n\n#loginButton a{\n    text-decoration: none;\n}\n.signupA {\n    color: #ffffff;\n    opacity: .7;\n    text-decoration: none;\n}\n.signupA:hover {\n    opacity: 1;\n}\n\n#loginButton {\n    font-size: 22px;\n    justify-self: right;\n    align-self: end;\n    margin: 0 20px 18px 0;\n    padding-right: 26px;\n    grid-column: 4/5;\n    text-decoration: none;\n    transition: transform 0.8s;\n}\n.loginA {\n    color: #ffffff;\n    opacity: .7;\n    text-decoration: none;\n}\n.loginA:hover{\n    opacity: 1;\n}\n\n/* END OF NAVBAR CSS */\n\n/* START OF MAIN CONTENT CSS */\n.boxOutline {\n    background-color: #fefefeec;\n    border-radius: 10px;\n    z-index: 2;\n}\n\n.mainContent {\n    margin: 50px 70px 0px 70px;\n    display: grid;\n    grid-template-columns: repeat(8, 1fr);\n    grid-column-gap: 26px;\n    grid-row-gap: 20px;\n}\n\n.searchSection {\n    margin-top: -162px;\n    grid-column: 1/9;\n    justify-self: center;\n    align-self: center; \n    z-index: 3;\n}\n\n#formContainer {\n    padding-bottom: 13px;\n\n}\n    /* WALMART SECTION */\n.walmartWindowFull {\n    grid-column: 2/8;\n    max-height: 660px;\n    text-align: center;\n    padding: 20px 30px 10px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n    z-index: 2;\n}\n.walmartHeader {\n    font-size: 32px;\n}\n.walmartWindowHalf {\n    grid-column: 1/5;\n    max-height: 700px;\n    text-align: center;\n    padding: 20px 30px 20px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n    z-index: 2;\n}\n.walmartResults {\n    margin-top: 32px;\n    text-align: left;\n    font-family: 'Source Sans Pro', sans-serif;\n}\n.walmartList {\n    display: grid;\n    grid-template-columns: 4fr 1fr 1fr;\n    padding-bottom: 12px;\n}\n.walmartList p {\n    align-self: center;\n}\n.walmartList a {\n    text-decoration: none;\n    color: #000000a1;\n}\n.walmartList a:hover{\n    color: #000000dd;\n}\n.walmartPrice {\n    justify-self: right;\n}\n.compareButton {\n    height: 30px;\n    width: 50px;\n    background-color: #fefefe;\n    justify-self: right;\n    align-self: center;\n}\n.compareButton:hover{\n    -webkit-box-shadow: 0px 1px 3px #6666668a;\n    -moz-box-shadow: 0px 1px 3px #6666668a;\n    box-shadow: -1px 1px 3px #6666668a;\n}\n.compareButton:focus{\n    outline: 0;\n}\n    /* WALMART SECTION END */\n\n.ebayAmazonSection{\n    grid-column: 5/9;\n    z-index: 2;\n}\n\n    /* AMAZON SECTION START */\n.amazonWindow {\n    max-height: 360px;\n    text-align: center;\n    padding: 14px 30px 14px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n    margin-bottom: 24px;\n}\n.amazonHeader {\n    font-size: 32px;\n    margin-bottom: 20px;\n}\n.amazonResult a {\n    text-decoration: none;\n    color: #000000a1;\n}\n.amazonResult p {\n    margin-bottom: 12px;\n}\n.amazonResult a:hover{\n    color: #000000dd;\n}\n.amazonResult img {\n    margin-top: 15px;\n}\n    /* AMAZON SECTION END */\n\n    /* EBAY SECTION START */\n.ebayWindow {\n    max-height: 360px;\n    text-align: center;\n    padding: 14px 30px 14px 30px;\n    overflow: scroll;\n    background-color: #fefefeec;\n    border-radius: 10px;\n}\n.ebayHeader {\n    font-size: 32px;\n    margin-bottom: 20px;\n}\n.ebayResult a {\n    text-decoration: none;\n    color: #000000a1;\n}\n.ebayResult p {\n    margin-bottom: 10px;\n}\n.ebayResult a:hover{\n    color: #000000dd;\n}\n.ebayResult img {\n    margin-top: 15px;\n}\n\n\n    /* EBAY SECTION END */\n\n/* END OF MAIN CONTENT CSS */\n\n.recentList {\n    list-style-type: none;\n    -webkit-padding-start: 0;\n}\n\n/* MEDIA QUERIES */\n\n@media (max-width: 740px) {\n    .mainContent {\n        grid-template-columns: 1fr;\n    }\n    .walmartWindowFull {\n        grid-column: 1/9;\n    }\n    .walmartWindowHalf {\n        grid-column: 1/9;  \n        padding: 10px 15px;\n        max-height: 400px;\n    }\n    .ebayAmazonSection{\n        grid-column: 1/9;\n        max-height: 400px;\n        margin-bottom: 14px;\n    }\n    .navBar {\n        Min-height: 160px;\n        align-self: center;\n    }\n    #homeTitle {\n        padding-top: 12px;\n        padding-left: 30px;\n        align-self: start;\n    }\n    #homeTitle a img {\n        height: 70px;\n        width: 70px;\n    }\n    #logoutButtonOne {\n        padding-top: 32px;\n        padding-right: 24px;\n        font-size: 22px;\n        align-self: start;\n    }\n    #homeTitle,\n    #logoutButtonOne {\n        padding-bottom: 55px;\n        align-self: start;\n    }\n    #homeTitleTwo,\n    #logoutButtonTwo {\n        visibility: hidden;\n    }\n    #signupButton {\n        padding-top: 32px;\n        padding-right: 24px;\n        font-size: 22px;\n        align-self: start;\n        justify-self: left;\n    }\n    .searchSection {\n        margin-top: -200px;\n    }\n    #navSearchInput {\n        height: 70px;\n    }\n    #navSearchButton {\n        height: 70px;\n    }\n  }", ""]);
 
 // exports
 

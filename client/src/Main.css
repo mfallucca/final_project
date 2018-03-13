@@ -383,3 +383,68 @@ body {
     list-style-type: none;
     -webkit-padding-start: 0;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 740px) {
+    .mainContent {
+        grid-template-columns: 1fr;
+    }
+    .walmartWindowFull {
+        grid-column: 1/9;
+    }
+    .walmartWindowHalf {
+        grid-column: 1/9;  
+        padding: 10px 15px;
+        max-height: 400px;
+    }
+    .ebayAmazonSection{
+        grid-column: 1/9;
+        max-height: 400px;
+        margin-bottom: 14px;
+    }
+    .navBar {
+        Min-height: 160px;
+        align-self: center;
+    }
+    #homeTitle {
+        padding-top: 12px;
+        padding-left: 30px;
+        align-self: start;
+    }
+    #homeTitle a img {
+        height: 70px;
+        width: 70px;
+    }
+    #logoutButtonOne {
+        padding-top: 32px;
+        padding-right: 24px;
+        font-size: 22px;
+        align-self: start;
+    }
+    #homeTitle,
+    #logoutButtonOne {
+        padding-bottom: 55px;
+        align-self: start;
+    }
+    #homeTitleTwo,
+    #logoutButtonTwo {
+        visibility: hidden;
+    }
+    #signupButton {
+        padding-top: 32px;
+        padding-right: 24px;
+        font-size: 22px;
+        align-self: start;
+        justify-self: left;
+    }
+    .searchSection {
+        margin-top: -200px;
+    }
+    #navSearchInput {
+        height: 70px;
+    }
+    #navSearchButton {
+        height: 70px;
+    }
+  }
