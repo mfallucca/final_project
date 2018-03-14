@@ -374,7 +374,6 @@ body {
     margin-top: 15px;
 }
 
-
     /* EBAY SECTION END */
 
 /* END OF MAIN CONTENT CSS */
@@ -383,10 +382,9 @@ body {
     list-style-type: none;
     -webkit-padding-start: 0;
 }
-
 /* MEDIA QUERIES */
 
-@media (max-width: 740px) {
+@media screen and (max-width: 740px) {
     .mainContent {
         grid-template-columns: 1fr;
     }
