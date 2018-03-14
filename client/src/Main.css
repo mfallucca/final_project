@@ -446,3 +446,50 @@ body {
         height: 70px;
     }
   }
+
+  @media screen and (max-width: 414px) {
+    body {
+        font-size: 18px;
+    }
+    .searchSection {
+        margin-top: -110px;
+    }
+    .walmartWindowHalf {
+        max-height: 200px;
+    }
+
+    .amazonWindow,
+    .ebayWindow {
+        max-height: 100px;
+        padding: 0px 10px 5px 10px;
+    }
+    .amazonWindow {
+        margin-bottom: 10px;
+    }
+    .amazonHeader,
+    .ebayHeader {
+        font-size: 24px;
+    }
+    .mainContent {
+        margin: 10px 10px 0px 10px;
+        grid-row-gap: 10px;
+    }
+    #homeTitle {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    #logoutButtonOne {
+        padding-top: 12px;
+        padding-right: 10px;
+    }
+    #navSearchInput {
+        height: 48px;
+        grid-column: 1/6;
+        width: auto;
+    }
+    #navSearchButton {
+        height: 48px;
+        grid-column: 7/9;
+        width: 60px;
+    }
+}
