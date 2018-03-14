@@ -333,7 +333,9 @@ class DashboardPage extends React.Component {
               </div>
             </div>
           ) : (
+            <div className="amazonWindow">
             <h3 className = "text-center">No Amazon Results to Display</h3>
+            </div>
           )}
             {this.state.ebayTitle ? (
               <div className="ebayWindow">
@@ -346,7 +348,9 @@ class DashboardPage extends React.Component {
                 </div>
               </div>
             ) : (
+              <div className="ebayWindow">
               <h3 className = "text-center">No Ebay Results to Display</h3>
+              </div>
             )}
             {/* {this.state.saved.length ? (
               <SearchList>

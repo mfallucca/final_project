@@ -36,13 +36,22 @@ router.get('/amazon/:upc', (req, res) => {
     itemId: upc,
     responseGroup: 'ItemAttributes,Offers,Images'
   }).then(function(results) {
-    // console.log(results[0])
+    if (results && results[0].DetailPageURL && results[0].MediumImage && results[0].ItemAttributes && results[0].OfferSummary && results[0].MediumImage[0].URL && results[0].ItemAttributes[0].Title && results[0].OfferSummary[0].LowestNewPrice && results[0].OfferSummary[0].LowestNewPrice[0].FormattedPrice) {
     res.status(200).json({
       url: results[0].DetailPageURL[0],
       medimage: results[0].MediumImage[0].URL[0],
       title: results[0].ItemAttributes[0].Title[0],
       newprice: results[0].OfferSummary[0].LowestNewPrice[0].FormattedPrice[0]
     });
+  }
+  else {
+    res.status(200).json({
+      url: '',
+      medimage: '',
+      title: '',
+      newprice: ''
+    });
+  }
   }).catch(function(err) {
     console.log(err);
   });
@@ -74,7 +83,8 @@ let params = {
 };
 
 ebay.get('finding', params, function (err, data) {
-  // if(err) throw err;
+  if(err) throw err;
+  if (data && data.findItemsAdvancedResponse && data.findItemsAdvancedResponse[0].searchResult && data.findItemsAdvancedResponse[0].searchResult[0].item && data.findItemsAdvancedResponse[0].searchResult[0].item[0].title && data.findItemsAdvancedResponse[0].searchResult[0].item[0].galleryURL && data.findItemsAdvancedResponse[0].searchResult[0].item[0].sellingStatus && data.findItemsAdvancedResponse[0].searchResult[0].item[0].sellingStatus[0].convertedCurrentPrice && data.findItemsAdvancedResponse[0].searchResult[0].item[0].shippingInfo && data.findItemsAdvancedResponse[0].searchResult[0].item[0].shippingInfo[0].shippingServiceCost && data.findItemsAdvancedResponse[0].searchResult[0].item[0].viewItemURL) {
     res.status(200).json({
       ebayTitle: data.findItemsAdvancedResponse[0].searchResult[0].item[0].title[0],
       ebayImage: data.findItemsAdvancedResponse[0].searchResult[0].item[0].galleryURL[0],
@@ -82,6 +92,16 @@ ebay.get('finding', params, function (err, data) {
       ebayShipping: data.findItemsAdvancedResponse[0].searchResult[0].item[0].shippingInfo[0].shippingServiceCost[0].__value__,
       ebayURL: data.findItemsAdvancedResponse[0].searchResult[0].item[0].viewItemURL[0]
     });
+  }
+  else {
+    res.status(200).json({
+      ebayTitle: '',
+      ebayImage: '',
+      ebayPrice: '',
+      ebayShipping: '',
+      ebayURL: ''
+    });
+  }
 });
 });
 
