@@ -16174,6 +16174,8 @@ var _Auth = __webpack_require__(50);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
+var _reactRouterDom = __webpack_require__(116);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16208,11 +16210,7 @@ var HomePage = function (_React$Component) {
           _Card.Card,
           { className: 'container', style: { borderRadius: '10px', backgroundColor: '#fefefeec' } },
           _react2.default.createElement(_Card.CardTitle, { title: 'Welcome to Pick It Up or Ship It Out!' }),
-          _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(
-            _Card.CardText,
-            { style: { fontSize: '16px', color: 'green' } },
-            'Welcome! You are logged in.'
-          ) : _react2.default.createElement(
+          _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(_reactRouterDom.Redirect, { to: '/dashboard', push: true }) : _react2.default.createElement(
             'div',
             null,
             _react2.default.createElement(

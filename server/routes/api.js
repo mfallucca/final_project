@@ -53,7 +53,13 @@ router.get('/amazon/:upc', (req, res) => {
     });
   }
   }).catch(function(err) {
-    console.log(err);
+    console.log(err[0].Error[0].Message);
+      res.status(200).json({
+        url: '',
+        medimage: '',
+        title: '',
+        newprice: ''
+      });
   });
 })
 
