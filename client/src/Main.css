@@ -456,11 +456,12 @@ body {
     }
     .walmartWindowHalf {
         max-height: 200px;
+        padding: 3px 15px;
     }
 
     .amazonWindow,
     .ebayWindow {
-        max-height: 100px;
+        max-height: 150px;
         padding: 0px 10px 5px 10px;
     }
     .amazonWindow {
