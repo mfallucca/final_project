@@ -16210,6 +16210,11 @@ var HomePage = function (_React$Component) {
           _Card.Card,
           { className: 'container', style: { borderRadius: '10px', backgroundColor: '#fefefeec' } },
           _react2.default.createElement(_Card.CardTitle, { title: 'Welcome to Pick It Up or Ship It Out!' }),
+          _react2.default.createElement(
+            'h5',
+            null,
+            'Save time by deciding whether to order a product online or to grab it at your local Walmart!'
+          ),
           _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(_reactRouterDom.Redirect, { to: '/dashboard', push: true }) : _react2.default.createElement(
             'div',
             null,
@@ -17009,9 +17014,6 @@ var FontAwesome = __webpack_require__(178);
 var DashboardPage = function (_React$Component) {
   _inherits(DashboardPage, _React$Component);
 
-  /**
-   * Class constructor.
-   */
   function DashboardPage(props) {
     _classCallCheck(this, DashboardPage);
 
@@ -17048,6 +17050,8 @@ var DashboardPage = function (_React$Component) {
     return _this;
   }
 
+  // Method for handling the input change in the search input box
+
   _createClass(DashboardPage, [{
     key: 'handleInputChangeQuery',
     value: function handleInputChangeQuery(event) {
@@ -17055,6 +17059,10 @@ var DashboardPage = function (_React$Component) {
     }
   }, {
     key: 'handleCompareClick',
+
+
+    // Method for handling the compare click in walmart results
+
     value: function handleCompareClick(event) {
       var _this2 = this;
 
@@ -17064,12 +17072,18 @@ var DashboardPage = function (_React$Component) {
       this.setState({ show: true });
       console.log(this.state.upc);
     }
+
+    // Method for handling the recent search item click
+
   }, {
     key: 'handleRecentClick',
     value: function handleRecentClick(event) {
       console.log(event.target.value);
       this.setState({ search: event.target.value }, this.handleRecentSearch);
     }
+
+    // Method for walmart search form, also calls addSaved method
+
   }, {
     key: 'handleFormSubmit',
     value: function handleFormSubmit(event) {
@@ -17097,6 +17111,10 @@ var DashboardPage = function (_React$Component) {
     }
   }, {
     key: 'handleRecentSearch',
+
+
+    // Method for the recent search functionality.  Calls walmart API without calling addSaved method
+
     value: function handleRecentSearch() {
       var _this4 = this;
 
@@ -17119,9 +17137,7 @@ var DashboardPage = function (_React$Component) {
       walmartxhr.send();
     }
 
-    /**
-     * This method will be executed after initial rendering.
-     */
+    // This method will be executed after initial rendering.
 
   }, {
     key: 'componentDidMount',
@@ -17146,7 +17162,7 @@ var DashboardPage = function (_React$Component) {
       xhr.send();
     }
 
-    // method to call the Amazon API
+    // Method to call the Amazon API and set state values
 
   }, {
     key: 'loadAmazon',
@@ -17181,7 +17197,7 @@ var DashboardPage = function (_React$Component) {
       amazonxhr.send();
     }
 
-    // method to call the Saved API
+    // Method to call the Saved API and set state values
 
   }, {
     key: 'addSaved',
@@ -17204,6 +17220,9 @@ var DashboardPage = function (_React$Component) {
       });
       savedxhr.send();
     }
+
+    // Method for calling retrieval API and setting state values for previously searched items
+
   }, {
     key: 'retrieveSaved',
     value: function retrieveSaved() {
@@ -17228,6 +17247,9 @@ var DashboardPage = function (_React$Component) {
       });
       retrievexhr.send();
     }
+
+    // eBay method for calling API and setting state values
+
   }, {
     key: 'loadEbay',
     value: function loadEbay() {
@@ -17271,9 +17293,8 @@ var DashboardPage = function (_React$Component) {
       this.loadAmazon();
       this.loadEbay();
     }
-    /**
-     * Render the component.
-     */
+
+    // Render method  
 
   }, {
     key: 'render',
@@ -17489,113 +17510,6 @@ var DashboardPage = function (_React$Component) {
 
 ;
 
-{} /* <Dashboard user={this.state.user} />
-   <Container>
-    <SearchForm 
-      handleFormSubmit={this.handleFormSubmit}
-      handleInputChangeQuery={this.handleInputChangeQuery}
-    />
-   </Container><br />
-   <Container fluid>
-   <Row>
-    {!this.state.show ? (
-      <Col size="sm-12 md-12">
-                    {this.state.walmartResults.length ? (
-          <SearchList>
-            {this.state.walmartResults.map(walmartContainer => (
-              <SearchListItem key={walmartContainer.itemId}>
-                <a href={walmartContainer.productUrl}>
-                  <strong>
-                    {walmartContainer.name}
-                  </strong>
-                </a>
-                <p>
-                    ${walmartContainer.salePrice}
-                </p>
-                <CompareBtn
-                  upc={walmartContainer.upc}
-                  handleCompareClick={this.handleCompareClick}
-                />
-              </SearchListItem>
-            ))}
-          </SearchList>
-      ) : (
-        <h3 className = "text-center">Please Search Using the Box Above!</h3>
-      )}
-    </Col>
-    ) : (
-      <Col size="sm-6 md-6">
-        {this.state.walmartResults.length ? (
-          <SearchList>
-            {this.state.walmartResults.map(walmartContainer => (
-              <SearchListItem key={walmartContainer.itemId}>
-                <a href={walmartContainer.productUrl}>
-                  <strong>
-                    {walmartContainer.name}
-                  </strong>
-                </a>
-                <p>
-                    ${walmartContainer.salePrice}
-                </p>
-                <CompareBtn
-                  upc={walmartContainer.upc}
-                  handleCompareClick={this.handleCompareClick}
-                />
-              </SearchListItem>
-            ))}
-          </SearchList>
-      ) : (
-        <h3>Please Search Using the Box Above!</h3>
-      )}
-    </Col>
-    )}
-    {this.state.show ? (
-      <Col size="md-6 sm-6">
-    {this.state.url ? (
-      <Container>
-        <h2>Amazon.com's Best Match:</h2>
-        <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
-        <p>{this.state.amazonPrice}</p>
-        <img src= {this.state.medimage}></img>
-      </Container>
-    ) : (
-      <h3 className = "text-center">No Amazon Results to Display</h3>
-    )}
-    <hr />
-      {this.state.ebayTitle ? (
-        <Container>
-          <h2>eBay.com's Best Match:</h2>
-          <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
-          <p> Price: ${this.state.ebayPrice}</p><p> Shipping: ${this.state.ebayShipping}</p>
-          <img src={this.state.ebayImage}></img>
-        </Container>
-      ) : (
-        <h3 className = "text-center">No Ebay Results to Display</h3>
-      )}
-      {this.state.saved.length ? (
-        <SearchList>
-          <h2>Previous Search Terms:</h2>
-        {this.state.saved.map(savedContainer => (
-          <SearchListItem>
-              <strong>
-                {savedContainer}
-              </strong>
-          </SearchListItem>
-        ))}
-        </SearchList>
-      ) : (
-        <h3 className = "text-center">No previous searches to display</h3>
-      )}
-    </Col>
-      ) : (
-        console.log("hiding")
-      )}
-   </Row>
-   </Container><br />
-   </div> */
-//     );
-//   }
-// }
 exports.default = DashboardPage;
 
 /***/ }),

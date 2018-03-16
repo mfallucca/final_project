@@ -17,6 +17,7 @@ class HomePage extends React.Component {
       <br />
       <Card className="container" style={{borderRadius: '10px', backgroundColor: '#fefefeec'}}>
         <CardTitle title="Welcome to Pick It Up or Ship It Out!" />
+        <h5>Save time by deciding whether to order a product online or to grab it at your local Walmart!</h5>
           {Auth.isUserAuthenticated() ? (
             <Redirect to="/dashboard" push/>
           ) : (

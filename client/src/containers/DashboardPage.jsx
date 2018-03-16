@@ -12,9 +12,6 @@ import Navbar from "../components/Navbar";
 const FontAwesome = require('react-fontawesome');
 
 class DashboardPage extends React.Component {
-  /**
-   * Class constructor.
-   */
   constructor(props) {
     super(props);
     this.state = {
@@ -46,10 +43,14 @@ class DashboardPage extends React.Component {
     this.addSaved = this.addSaved.bind(this);
     this.retrieveSaved = this.retrieveSaved.bind(this);
   }
+  
+// Method for handling the input change in the search input box
 
   handleInputChangeQuery(event) {
     this.setState({ search: event.target.value });
   };
+
+// Method for handling the compare click in walmart results
 
   handleCompareClick(event) {
     this.setState({ upc: event.currentTarget.value }, () => { this.loadBoth()})
@@ -57,14 +58,16 @@ class DashboardPage extends React.Component {
     console.log(this.state.upc)
   }
 
+// Method for handling the recent search item click
+
   handleRecentClick(event) {
     console.log(event.target.value)
     this.setState({search: event.target.value}, 
-      this.handleRecentSearch
+    this.handleRecentSearch
     )
   }
 
-
+// Method for walmart search form, also calls addSaved method
   
   handleFormSubmit(event) {
     event.preventDefault();
@@ -77,17 +80,19 @@ class DashboardPage extends React.Component {
     walmartxhr.responseType = 'json';
     walmartxhr.addEventListener('load', () => {
     // console.log(walmartxhr)
-    if (walmartxhr.status === 200) {
-      this.setState({
-        walmartResults: walmartxhr.response.queryResults[0].items
-      });
-      console.log(this.state.walmartResults)
-    }
-  });
-  walmartxhr.send();
-  this.addSaved()
+      if (walmartxhr.status === 200) {
+        this.setState({
+          walmartResults: walmartxhr.response.queryResults[0].items
+        });
+        console.log(this.state.walmartResults)
+      }
+    });
+    walmartxhr.send();
+    this.addSaved()
 
   };
+
+// Method for the recent search functionality.  Calls walmart API without calling addSaved method
 
   handleRecentSearch() {
     const walmartxhr = new XMLHttpRequest();
@@ -99,20 +104,19 @@ class DashboardPage extends React.Component {
     walmartxhr.responseType = 'json';
     walmartxhr.addEventListener('load', () => {
     // console.log(walmartxhr)
-    if (walmartxhr.status === 200) {
-      this.setState({
-        walmartResults: walmartxhr.response.queryResults[0].items
-      });
-      console.log(this.state.walmartResults)
-    }
-  });
-  walmartxhr.send();
+      if (walmartxhr.status === 200) {
+        this.setState({
+          walmartResults: walmartxhr.response.queryResults[0].items
+        });
+        console.log(this.state.walmartResults)
+      }
+    });
+    walmartxhr.send();
 
   }
 
-  /**
-   * This method will be executed after initial rendering.
-   */
+// This method will be executed after initial rendering.
+
   componentDidMount() {
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/api/dashboard');
@@ -132,7 +136,7 @@ class DashboardPage extends React.Component {
     xhr.send();
   }
 
-  // method to call the Amazon API
+// Method to call the Amazon API and set state values
 
   loadAmazon() {
     const amazonxhr = new XMLHttpRequest();
@@ -144,27 +148,28 @@ class DashboardPage extends React.Component {
     amazonxhr.responseType = 'json';
     amazonxhr.addEventListener('load', () => {
     // console.log(amazonxhr)
-    if (amazonxhr.status === 200 && amazonxhr.response.url) {
-      this.setState({
-        url: amazonxhr.response.url,
-        medimage: amazonxhr.response.medimage,
-        resultTitle: amazonxhr.response.title,
-        amazonPrice: amazonxhr.response.newprice
-      })
-    }
-    else {
-      this.setState({
-        url: '',
-        medimage: '',
-        resultTitle: '',
-        amazonPrice: ''
-    })
+      if (amazonxhr.status === 200 && amazonxhr.response.url) {
+        this.setState({
+          url: amazonxhr.response.url,
+          medimage: amazonxhr.response.medimage,
+          resultTitle: amazonxhr.response.title,
+          amazonPrice: amazonxhr.response.newprice
+        })
+      }
+      else {
+        this.setState({
+          url: '',
+          medimage: '',
+          resultTitle: '',
+          amazonPrice: ''
+        })
+      }
+    });
+    amazonxhr.send();
   }
-  });
-  amazonxhr.send();
-}
 
-// method to call the Saved API
+// Method to call the Saved API and set state values
+
   addSaved() {
     const savedxhr = new XMLHttpRequest();
     let email = this.state.user.email;
@@ -177,13 +182,15 @@ class DashboardPage extends React.Component {
     savedxhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
     savedxhr.responseType = 'json';
     savedxhr.addEventListener('load', () => {
-    // console.log(savedxhr)
-    if (savedxhr.status === 200) {
-    console.log("new item saved")
+      // console.log(savedxhr)
+      if (savedxhr.status === 200) {
+        console.log("new item saved")
+      }
+    });
+    savedxhr.send();
   }
-  });
-  savedxhr.send();
-  }
+
+// Method for calling retrieval API and setting state values for previously searched items
 
   retrieveSaved() {
     const retrievexhr = new XMLHttpRequest();
@@ -195,17 +202,18 @@ class DashboardPage extends React.Component {
     retrievexhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
     retrievexhr.responseType = 'json';
     retrievexhr.addEventListener('load', () => {
-    // console.log(retrievexhr)
-    if (retrievexhr.status === 200) {
-    this.setState({
-      saved: retrievexhr.response.savedResults
-    })
-    console.log(this.state.saved)
-  }
-  });
-  retrievexhr.send();
+      // console.log(retrievexhr)
+      if (retrievexhr.status === 200) {
+      this.setState({
+        saved: retrievexhr.response.savedResults
+      })
+      console.log(this.state.saved)
+      }
+    });
+    retrievexhr.send();
   }
 
+// eBay method for calling API and setting state values
 
   loadEbay() {
     const ebayxhr = new XMLHttpRequest();
@@ -216,27 +224,27 @@ class DashboardPage extends React.Component {
     ebayxhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
     ebayxhr.responseType = 'json';
     ebayxhr.addEventListener('load', () => {
-    // console.log(ebayxhr)
-    if (ebayxhr.status === 200 && ebayxhr.response.ebayURL) {
-    this.setState({
-      ebayTitle: ebayxhr.response.ebayTitle,
-      ebayImage: ebayxhr.response.ebayImage,
-      ebayPrice: ebayxhr.response.ebayPrice,
-      ebayShipping: ebayxhr.response.ebayShipping,
-      ebayURL: ebayxhr.response.ebayURL
-    })
-  }
-  else {
-    this.setState({
-      ebayTitle: '',
-      ebayImage: '',
-      ebayPrice: '',
-      ebayShipping: '',
-      ebayURL: ''
-    })
-  }
-  });
-  ebayxhr.send();
+      // console.log(ebayxhr)
+      if (ebayxhr.status === 200 && ebayxhr.response.ebayURL) {
+        this.setState({
+          ebayTitle: ebayxhr.response.ebayTitle,
+          ebayImage: ebayxhr.response.ebayImage,
+          ebayPrice: ebayxhr.response.ebayPrice,
+          ebayShipping: ebayxhr.response.ebayShipping,
+          ebayURL: ebayxhr.response.ebayURL
+        })
+      }
+      else {
+        this.setState({
+          ebayTitle: '',
+          ebayImage: '',
+          ebayPrice: '',
+          ebayShipping: '',
+          ebayURL: ''
+        })
+      }
+    });
+    ebayxhr.send();
   }
 
 // Method to call both the amazon and ebay APIs simultaneously
@@ -245,9 +253,9 @@ class DashboardPage extends React.Component {
     this.loadAmazon();
     this.loadEbay();
   }
-  /**
-   * Render the component.
-   */
+
+// Render method  
+
   render() {
     return (
       <div className='mainContent'>
@@ -352,20 +360,6 @@ class DashboardPage extends React.Component {
               <h3 className = "text-center">No Ebay Results to Display</h3>
               </div>
             )}
-            {/* {this.state.saved.length ? (
-              <SearchList>
-                <h2>Previous Search Terms:</h2>
-              {this.state.saved.map(savedContainer => (
-                <SearchListItem>
-                    <strong>
-                      {savedContainer}
-                    </strong>
-                </SearchListItem>
-              ))}
-              </SearchList>
-            ) : (
-              <h3 className = "text-center">No previous searches to display</h3>
-            )} */}
           </div>
             ) : (
               console.log("hiding")
@@ -375,115 +369,4 @@ class DashboardPage extends React.Component {
   }
 };
 
-
-
-        {/* <Dashboard user={this.state.user} />
-        <Container>
-          <SearchForm 
-            handleFormSubmit={this.handleFormSubmit}
-            handleInputChangeQuery={this.handleInputChangeQuery}
-          />
-        </Container><br />
-        <Container fluid>
-        <Row>
-          {!this.state.show ? (
-            <Col size="sm-12 md-12">
-                          {this.state.walmartResults.length ? (
-                <SearchList>
-                  {this.state.walmartResults.map(walmartContainer => (
-                    <SearchListItem key={walmartContainer.itemId}>
-                      <a href={walmartContainer.productUrl}>
-                        <strong>
-                          {walmartContainer.name}
-                        </strong>
-                      </a>
-                      <p>
-                          ${walmartContainer.salePrice}
-                      </p>
-                      <CompareBtn
-                        upc={walmartContainer.upc}
-                        handleCompareClick={this.handleCompareClick}
-                      />
-                    </SearchListItem>
-                  ))}
-                </SearchList>
-            ) : (
-              <h3 className = "text-center">Please Search Using the Box Above!</h3>
-            )}
-          </Col>
-          ) : (
-            <Col size="sm-6 md-6">
-              {this.state.walmartResults.length ? (
-                <SearchList>
-                  {this.state.walmartResults.map(walmartContainer => (
-                    <SearchListItem key={walmartContainer.itemId}>
-                      <a href={walmartContainer.productUrl}>
-                        <strong>
-                          {walmartContainer.name}
-                        </strong>
-                      </a>
-                      <p>
-                          ${walmartContainer.salePrice}
-                      </p>
-                      <CompareBtn
-                        upc={walmartContainer.upc}
-                        handleCompareClick={this.handleCompareClick}
-                      />
-                    </SearchListItem>
-                  ))}
-                </SearchList>
-            ) : (
-              <h3>Please Search Using the Box Above!</h3>
-            )}
-          </Col>
-          )}
-          {this.state.show ? (
-            <Col size="md-6 sm-6">
-          {this.state.url ? (
-            <Container>
-              <h2>Amazon.com's Best Match:</h2>
-              <p><a href = {this.state.url}>{this.state.resultTitle}</a></p>
-              <p>{this.state.amazonPrice}</p>
-              <img src= {this.state.medimage}></img>
-            </Container>
-          ) : (
-            <h3 className = "text-center">No Amazon Results to Display</h3>
-          )}
-          <hr />
-            {this.state.ebayTitle ? (
-              <Container>
-                <h2>eBay.com's Best Match:</h2>
-                <p><a href ={this.state.ebayURL}>{this.state.ebayTitle}</a></p>
-                <p> Price: ${this.state.ebayPrice}</p><p> Shipping: ${this.state.ebayShipping}</p>
-                <img src={this.state.ebayImage}></img>
-              </Container>
-            ) : (
-              <h3 className = "text-center">No Ebay Results to Display</h3>
-            )}
-            {this.state.saved.length ? (
-              <SearchList>
-                <h2>Previous Search Terms:</h2>
-              {this.state.saved.map(savedContainer => (
-                <SearchListItem>
-                    <strong>
-                      {savedContainer}
-                    </strong>
-                </SearchListItem>
-              ))}
-              </SearchList>
-            ) : (
-              <h3 className = "text-center">No previous searches to display</h3>
-            )}
-          </Col>
-            ) : (
-              console.log("hiding")
-            )}
-        </Row>
-      </Container><br />
-
-
-      </div> */}
-//     );
-//   }
-// }
 export default DashboardPage;
