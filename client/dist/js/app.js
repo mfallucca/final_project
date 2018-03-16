@@ -9413,7 +9413,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Navbar = __webpack_require__(210);
+var _Navbar = __webpack_require__(208);
 
 Object.defineProperty(exports, "default", {
   enumerable: true,
@@ -15542,7 +15542,7 @@ var _Navbar = __webpack_require__(120);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _Navbar3 = __webpack_require__(209);
+var _Navbar3 = __webpack_require__(210);
 
 var _Navbar4 = _interopRequireDefault(_Navbar3);
 
@@ -16466,20 +16466,20 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "signupButton" },
+            { id: "logoutButtonOne" },
             _react2.default.createElement(
                 "a",
-                { href: "/signup" },
-                "Sign Up"
+                { id: "logoutOne", href: "/logout" },
+                "Log out"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "loginButton" },
+            { id: "logoutButtonTwo" },
             _react2.default.createElement(
                 "a",
-                { href: "/login" },
-                "Log In"
+                { id: "logoutTwo", href: "/logout" },
+                "Log out"
             )
         )
     );
@@ -16489,28 +16489,6 @@ exports.default = Navbar;
 
 /***/ }),
 /* 209 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Navbar = __webpack_require__(208);
-
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Navbar).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16559,26 +16537,48 @@ var Navbar = function Navbar(props) {
         _react2.default.createElement(_Form2.default, null),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonOne" },
+            { id: "signupButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutOne", href: "/logout" },
-                "Log out"
+                { href: "/signup" },
+                "Sign Up"
             )
         ),
         _react2.default.createElement(
             "div",
-            { id: "logoutButtonTwo" },
+            { id: "loginButton" },
             _react2.default.createElement(
                 "a",
-                { id: "logoutTwo", href: "/logout" },
-                "Log out"
+                { href: "/login" },
+                "Log In"
             )
         )
     );
 };
 
 exports.default = Navbar;
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Navbar = __webpack_require__(209);
+
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Navbar).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 211 */
